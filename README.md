@@ -8,6 +8,9 @@ python train.py
 3、一个典型的输出参考 **std.out** 中
 
 4、结果
+
+训练设计的结构
+![stru](/Fig/data.png)
 ```
 $ ls MACE_models/
 mace_model_compiled.model  mace_model_run-42_debug.log         mace_model_run-42.log             mace_model_run-42_train_Default_stage_one.png  mace_model_stagetwo_compiled.model
