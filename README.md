@@ -6,6 +6,7 @@
 python train.py
 ```
 3、一个典型的输出参考 **std.out** 中
+
 4、结果
 ```
 $ ls MACE_models/
