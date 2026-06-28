@@ -1,0 +1,1173 @@
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+
+==================================================
+  拆分数据集: mace.xyz
+==================================================
+总结构数:       1270
+  IsolatedAtom: 0
+  普通结构:     1270
+拆分比例:       [0.8, 0.1, 0.1]
+  训练集 (含IsolatedAtom): 1016
+  验证集:                 127
+  测试集:                 127
+
+已写入:
+  /share/home/hechao/Work/DataOfDFT/mace/splitted_data/train.xyz
+  /share/home/hechao/Work/DataOfDFT/mace/splitted_data/valid.xyz
+  /share/home/hechao/Work/DataOfDFT/mace/splitted_data/test.xyz
+==================================================
+
+
+==================================================
+  数据文件分析: splitted_data/train.xyz
+==================================================
+结构1 注释头: Lattice="26.8471 0.0 0.0 0.0 26.8572 0.0 0.0 0.0 32.6861" Properties=species:S:1:pos:R:3:forces:R:3 Virial="29.3674093806 5.9377140096 -13.1519007203 5.9377140096 25.3558799369 -13.1379969167 -13.1519007203 -13.1379969167 24.9493711984" config_type=/share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/878/OUT.amor_SiO2 energy=-39243.022531 pbc="T T T"
+结构2 注释头: Lattice="9.90916 0.0 0.0 0.0 9.90916 0.0 0.0 0.0 14.6227" Properties=species:S:1:pos:R:3:forces:R:3 Virial="56.0571775037 -11.6913182056 -0.0301743659 -11.6913182056 4.449013143 -1.9919372414 -0.0301743659 -1.9919372414 24.7376937446" config_type=/share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/193/OUT.amor_SiO2 energy=-31348.573111 pbc="T T T"
+总结构数: 1016
+原子种类: ['H', 'O', 'Si']
+原子数范围: 64 ~ 174
+
+ASE info.keys():  ['Virial', 'config_type']
+ASE arrays.keys(): ['numbers', 'positions']
+ASE calc:         ['energy (from calc)', 'forces (from calc)']
+
+--- 从原始文件检测 ---
+数据列:     []
+key=value:  ['Virial', 'config_type', 'energy', 'pbc']
+==================================================
+
+[INFO] 配置文件: MACE_models/mace_model_config.yml
+
+==================================================
+  训练配置
+==================================================
+模型:     mace_model
+设备:     cuda
+训练文件: splitted_data/train.xyz
+验证文件: splitted_data/valid.xyz
+测试文件: splitted_data/test.xyz
+通道数:   128  |  max_L: 1  |  r_max: 5.0
+epochs:   500  |  batch: 10
+energy_key: energy  |  forces_key: forces
+输出目录: /share/home/hechao/Work/DataOfDFT/mace/MACE_models
+==================================================
+
+[INFO] 开始训练...
+
+2026-06-27 22:18:55.983 INFO: ===========VERIFYING SETTINGS===========
+2026-06-27 22:18:55.983 INFO: Stage Two is activated as start_stage_two was defined
+2026-06-27 22:18:55.983 INFO: MACE version: 0.3.15
+2026-06-27 22:18:56.088 INFO: CUDA version: 11.8, CUDA device: 0
+2026-06-27 22:18:56.461 INFO: ===========LOADING INPUT DATA===========
+2026-06-27 22:18:56.461 INFO: Using heads: ['Default']
+2026-06-27 22:18:56.461 INFO: Using the key specifications to parse data:
+2026-06-27 22:18:56.461 INFO: Default: KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'})
+2026-06-27 22:18:56.461 INFO: =============    Processing head Default     ===========
+2026-06-27 22:18:57.287 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2026-06-27 22:18:57.457 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2026-06-27 22:18:57.694 INFO: Training set 1/1 [energy: 1016, stress: 0, virials: 0, dipole components: 0, head: 1016, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1016, charges: 0]
+2026-06-27 22:18:57.701 INFO: Total Training set [energy: 1016, stress: 0, virials: 0, dipole components: 0, head: 1016, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1016, charges: 0]
+2026-06-27 22:18:57.821 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2026-06-27 22:18:57.843 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2026-06-27 22:18:57.872 INFO: Validation set 1/1 [energy: 127, stress: 0, virials: 0, dipole components: 0, head: 127, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 127, charges: 0]
+2026-06-27 22:18:57.873 INFO: Total Validation set [energy: 127, stress: 0, virials: 0, dipole components: 0, head: 127, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 127, charges: 0]
+2026-06-27 22:18:57.988 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2026-06-27 22:18:58.009 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2026-06-27 22:18:58.039 INFO: Test set 1/1 [energy: 127, stress: 0, virials: 0, dipole components: 0, head: 127, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 127, charges: 0]
+2026-06-27 22:18:58.040 INFO: Total Test set [energy: 127, stress: 0, virials: 0, dipole components: 0, head: 127, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 127, charges: 0]
+2026-06-27 22:18:58.040 INFO: Total number of configurations: train=1016, valid=127, tests=[/share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/010/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/070/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/032/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/929/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1040/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/024/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/963/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/344/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/913/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/788/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/611/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/618/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/041/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/090/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/157/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/143/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1031/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/007/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/097/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/840/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/873/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/113/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/022/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/571/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/647/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/707/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/368/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/933/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/081/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/335/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/005/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/372/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/122/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/769/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/640/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/852/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/265/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/474/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/991/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/262/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/046/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/378/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/651/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/476/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/089/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/299/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/025/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/494/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/279/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/970/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/382/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/607/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/776/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/164/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/007/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/923/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/180/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/057/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/376/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/259/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/557/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/588/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/163/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/577/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/758/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/069/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/083/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1015/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/085/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/074/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/422/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/296/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/004/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/053/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/223/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/013/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/570/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/430/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/960/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/072/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/605/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/106/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/928/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/770/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/089/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/371/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/534/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/565/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1008/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/608/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/100/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/004/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/519/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/270/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/148/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/074/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/526/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/695/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/156/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/014/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/399/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/037/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/749/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/281/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/689/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/003/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/237/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/979/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/055/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/063/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/864/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/306/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/277/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1001/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/062/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/066/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/694/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/040/OUT.Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/089/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/946/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1018/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/115/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/287/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/331/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/393/OUT.amor_SiO2_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/052/OUT.amor_Si_Default: 1, /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1035/OUT.amor_SiO2_Default: 1],
+2026-06-27 22:18:58.060 INFO: Atomic Numbers used: [1, 8, 14]
+2026-06-27 22:18:58.060 INFO: Isolated Atomic Energies (E0s) not in training file, using command line argument
+2026-06-27 22:18:58.061 INFO: Computing average Atomic Energies using least squares regression
+2026-06-27 22:18:58.069 INFO: Atomic Energies used (z: eV) for head Default: {1: -15.47453739314421, 8: -436.21661567315715, 14: -107.14382821825325}
+2026-06-27 22:18:58.069 INFO: Processing datasets for head 'Default'
+2026-06-27 22:19:00.787 INFO: Combining 1 list datasets for head 'Default'
+2026-06-27 22:19:01.122 INFO: Combining 1 list datasets for head 'Default_valid'
+2026-06-27 22:19:01.122 INFO: Combined validation datasets for Default
+2026-06-27 22:19:01.122 INFO: Head 'Default' training dataset size: 1016
+2026-06-27 22:19:01.123 INFO: Computing average number of neighbors
+2026-06-27 22:19:02.194 INFO: Average number of neighbors: 25.83390805536943
+2026-06-27 22:19:02.194 INFO: During training the following quantities will be reported: energy, forces
+2026-06-27 22:19:02.194 INFO: ===========MODEL DETAILS===========
+2026-06-27 22:19:02.679 INFO: Building model
+2026-06-27 22:19:02.680 INFO: Message passing with 128 channels and max_L=1 (128x0e+128x1o)
+2026-06-27 22:19:02.680 INFO: 2 layers, each with correlation order: 3 (body order: 4) and spherical harmonics up to: l=3
+2026-06-27 22:19:02.680 INFO: 8 radial and 5 basis functions
+2026-06-27 22:19:02.680 INFO: Radial cutoff: 5.0 A (total receptive field for each atom: 10.0 A)
+2026-06-27 22:19:02.680 INFO: Distance transform for radial basis functions: None
+2026-06-27 22:19:02.680 INFO: Hidden irreps: 128x0e+128x1o
+2026-06-27 22:19:05.251 INFO: ===========OPTIMIZER INFORMATION===========
+2026-06-27 22:19:05.251 INFO: Using ADAM as parameter optimizer
+2026-06-27 22:19:05.251 INFO: Batch size: 10
+2026-06-27 22:19:05.251 INFO: Using Exponential Moving Average with decay: 0.99
+2026-06-27 22:19:05.251 INFO: Number of gradient updates: 50800
+2026-06-27 22:19:05.251 INFO: Learning rate: 0.01, weight decay: 5e-07
+2026-06-27 22:19:05.251 INFO: WeightedEnergyForcesLoss(energy_weight=1.000, forces_weight=100.000)
+2026-06-27 22:19:05.252 INFO: === Layer's learning rates ===
+2026-06-27 22:19:05.252 INFO: Param group 0: lr = 0.01
+2026-06-27 22:19:05.252 INFO: Param group 1: lr = 0.01
+2026-06-27 22:19:05.252 INFO: Param group 2: lr = 0.01
+2026-06-27 22:19:05.252 INFO: Param group 3: lr = 0.01
+2026-06-27 22:19:05.252 INFO: Param group 4: lr = 0.01
+2026-06-27 22:19:05.253 INFO: Stage Two (after 200 epochs) with loss function: WeightedEnergyForcesLoss(energy_weight=1000.000, forces_weight=100.000), with energy weight : 1000.0, forces weight : 100.0 and learning rate : 0.001
+2026-06-27 22:19:05.333 INFO: Using gradient clipping with tolerance=10.000
+2026-06-27 22:19:05.333 INFO: 
+2026-06-27 22:19:05.333 INFO: ===========TRAINING===========
+2026-06-27 22:19:05.333 INFO: Started training, reporting errors on validation set
+2026-06-27 22:19:05.333 INFO: Loss metrics on validation set
+2026-06-27 22:19:17.275 INFO: Initial: head: Default, loss=13.41138353, RMSE_E_per_atom=   50.03 meV, RMSE_F= 1146.19 meV / A
+2026-06-27 22:21:29.547 INFO: Epoch 0: head: Default, loss=0.41758269, RMSE_E_per_atom=  404.34 meV, RMSE_F=  197.77 meV / A
+2026-06-27 22:23:32.775 INFO: Epoch 1: head: Default, loss=0.14765496, RMSE_E_per_atom=  239.18 meV, RMSE_F=  117.34 meV / A
+2026-06-27 22:25:36.214 INFO: Epoch 2: head: Default, loss=0.09468405, RMSE_E_per_atom=  192.52 meV, RMSE_F=   93.99 meV / A
+2026-06-27 22:27:39.562 INFO: Epoch 3: head: Default, loss=0.07191178, RMSE_E_per_atom=  162.24 meV, RMSE_F=   82.02 meV / A
+2026-06-27 22:29:43.025 INFO: Epoch 4: head: Default, loss=0.06063283, RMSE_E_per_atom=  155.73 meV, RMSE_F=   75.18 meV / A
+2026-06-27 22:31:46.401 INFO: Epoch 5: head: Default, loss=0.05237974, RMSE_E_per_atom=  141.80 meV, RMSE_F=   69.92 meV / A
+2026-06-27 22:33:49.674 INFO: Epoch 6: head: Default, loss=0.04578274, RMSE_E_per_atom=  125.19 meV, RMSE_F=   65.49 meV / A
+2026-06-27 22:35:53.047 INFO: Epoch 7: head: Default, loss=0.04054904, RMSE_E_per_atom=  111.81 meV, RMSE_F=   61.75 meV / A
+2026-06-27 22:37:56.385 INFO: Epoch 8: head: Default, loss=0.03759154, RMSE_E_per_atom=  110.37 meV, RMSE_F=   59.42 meV / A
+2026-06-27 22:40:00.642 INFO: Epoch 9: head: Default, loss=0.03397836, RMSE_E_per_atom=   97.44 meV, RMSE_F=   56.63 meV / A
+2026-06-27 22:42:04.480 INFO: Epoch 10: head: Default, loss=0.03170340, RMSE_E_per_atom=   90.46 meV, RMSE_F=   54.76 meV / A
+2026-06-27 22:44:07.712 INFO: Epoch 11: head: Default, loss=0.03067037, RMSE_E_per_atom=   93.69 meV, RMSE_F=   53.79 meV / A
+2026-06-27 22:46:11.283 INFO: Epoch 12: head: Default, loss=0.02805124, RMSE_E_per_atom=   77.29 meV, RMSE_F=   51.63 meV / A
+2026-06-27 22:48:14.498 INFO: Epoch 13: head: Default, loss=0.02619968, RMSE_E_per_atom=   66.69 meV, RMSE_F=   50.01 meV / A
+2026-06-27 22:50:17.645 INFO: Epoch 14: head: Default, loss=0.02461797, RMSE_E_per_atom=   56.82 meV, RMSE_F=   48.57 meV / A
+2026-06-27 22:52:20.701 INFO: Epoch 15: head: Default, loss=0.02324533, RMSE_E_per_atom=   48.31 meV, RMSE_F=   47.27 meV / A
+2026-06-27 22:54:23.799 INFO: Epoch 16: head: Default, loss=0.02245680, RMSE_E_per_atom=   48.91 meV, RMSE_F=   46.44 meV / A
+2026-06-27 22:56:26.897 INFO: Epoch 17: head: Default, loss=0.02161459, RMSE_E_per_atom=   47.17 meV, RMSE_F=   45.57 meV / A
+2026-06-27 22:58:29.961 INFO: Epoch 18: head: Default, loss=0.02060893, RMSE_E_per_atom=   40.32 meV, RMSE_F=   44.56 meV / A
+2026-06-27 23:00:33.067 INFO: Epoch 19: head: Default, loss=0.01985391, RMSE_E_per_atom=   38.21 meV, RMSE_F=   43.75 meV / A
+2026-06-27 23:02:36.040 INFO: Epoch 20: head: Default, loss=0.02014472, RMSE_E_per_atom=   55.42 meV, RMSE_F=   43.91 meV / A
+2026-06-27 23:04:38.763 INFO: Epoch 21: head: Default, loss=0.01907191, RMSE_E_per_atom=   45.07 meV, RMSE_F=   42.81 meV / A
+2026-06-27 23:06:41.761 INFO: Epoch 22: head: Default, loss=0.01812871, RMSE_E_per_atom=   33.68 meV, RMSE_F=   41.84 meV / A
+2026-06-27 23:08:44.717 INFO: Epoch 23: head: Default, loss=0.01864555, RMSE_E_per_atom=   48.76 meV, RMSE_F=   42.24 meV / A
+2026-06-27 23:10:47.273 INFO: Epoch 24: head: Default, loss=0.01760398, RMSE_E_per_atom=   39.48 meV, RMSE_F=   41.15 meV / A
+2026-06-27 23:12:50.529 INFO: Epoch 25: head: Default, loss=0.01671599, RMSE_E_per_atom=   30.70 meV, RMSE_F=   40.19 meV / A
+2026-06-27 23:14:53.593 INFO: Epoch 26: head: Default, loss=0.01606938, RMSE_E_per_atom=   26.15 meV, RMSE_F=   39.44 meV / A
+2026-06-27 23:16:56.574 INFO: Epoch 27: head: Default, loss=0.01560448, RMSE_E_per_atom=   22.42 meV, RMSE_F=   38.90 meV / A
+2026-06-27 23:18:59.605 INFO: Epoch 28: head: Default, loss=0.01508859, RMSE_E_per_atom=   18.84 meV, RMSE_F=   38.27 meV / A
+2026-06-27 23:21:02.628 INFO: Epoch 29: head: Default, loss=0.01467602, RMSE_E_per_atom=   17.37 meV, RMSE_F=   37.75 meV / A
+2026-06-27 23:23:05.651 INFO: Epoch 30: head: Default, loss=0.01427571, RMSE_E_per_atom=   15.48 meV, RMSE_F=   37.24 meV / A
+2026-06-27 23:25:08.739 INFO: Epoch 31: head: Default, loss=0.01395637, RMSE_E_per_atom=   15.76 meV, RMSE_F=   36.83 meV / A
+2026-06-27 23:27:11.821 INFO: Epoch 32: head: Default, loss=0.01365412, RMSE_E_per_atom=   14.98 meV, RMSE_F=   36.43 meV / A
+2026-06-27 23:29:15.102 INFO: Epoch 33: head: Default, loss=0.01353682, RMSE_E_per_atom=   15.37 meV, RMSE_F=   36.25 meV / A
+2026-06-27 23:31:18.125 INFO: Epoch 34: head: Default, loss=0.01415403, RMSE_E_per_atom=   34.35 meV, RMSE_F=   36.93 meV / A
+2026-06-27 23:33:20.906 INFO: Epoch 35: head: Default, loss=0.01363011, RMSE_E_per_atom=   27.84 meV, RMSE_F=   36.31 meV / A
+2026-06-27 23:35:23.795 INFO: Epoch 36: head: Default, loss=0.01313856, RMSE_E_per_atom=   20.78 meV, RMSE_F=   35.70 meV / A
+2026-06-27 23:37:27.132 INFO: Epoch 37: head: Default, loss=0.01281394, RMSE_E_per_atom=   16.69 meV, RMSE_F=   35.28 meV / A
+2026-06-27 23:39:30.371 INFO: Epoch 38: head: Default, loss=0.01253774, RMSE_E_per_atom=   14.22 meV, RMSE_F=   34.90 meV / A
+2026-06-27 23:41:33.645 INFO: Epoch 39: head: Default, loss=0.01227814, RMSE_E_per_atom=   12.05 meV, RMSE_F=   34.54 meV / A
+2026-06-27 23:43:36.725 INFO: Epoch 40: head: Default, loss=0.01200917, RMSE_E_per_atom=   10.27 meV, RMSE_F=   34.17 meV / A
+2026-06-27 23:45:39.748 INFO: Epoch 41: head: Default, loss=0.01178444, RMSE_E_per_atom=    8.50 meV, RMSE_F=   33.85 meV / A
+2026-06-27 23:47:42.854 INFO: Epoch 42: head: Default, loss=0.01168688, RMSE_E_per_atom=   11.24 meV, RMSE_F=   33.70 meV / A
+2026-06-27 23:49:46.019 INFO: Epoch 43: head: Default, loss=0.01155020, RMSE_E_per_atom=   11.76 meV, RMSE_F=   33.51 meV / A
+2026-06-27 23:51:49.157 INFO: Epoch 44: head: Default, loss=0.01134246, RMSE_E_per_atom=    9.07 meV, RMSE_F=   33.21 meV / A
+2026-06-27 23:53:52.263 INFO: Epoch 45: head: Default, loss=0.01116907, RMSE_E_per_atom=    7.76 meV, RMSE_F=   32.95 meV / A
+2026-06-27 23:55:55.261 INFO: Epoch 46: head: Default, loss=0.01101080, RMSE_E_per_atom=    7.45 meV, RMSE_F=   32.72 meV / A
+2026-06-27 23:57:58.334 INFO: Epoch 47: head: Default, loss=0.01084205, RMSE_E_per_atom=    6.36 meV, RMSE_F=   32.47 meV / A
+2026-06-28 00:00:01.406 INFO: Epoch 48: head: Default, loss=0.01073775, RMSE_E_per_atom=    7.99 meV, RMSE_F=   32.30 meV / A
+2026-06-28 00:02:04.304 INFO: Epoch 49: head: Default, loss=0.01060758, RMSE_E_per_atom=    8.54 meV, RMSE_F=   32.10 meV / A
+2026-06-28 00:04:07.539 INFO: Epoch 50: head: Default, loss=0.01045512, RMSE_E_per_atom=    7.60 meV, RMSE_F=   31.87 meV / A
+2026-06-28 00:06:10.612 INFO: Epoch 51: head: Default, loss=0.01035724, RMSE_E_per_atom=    7.90 meV, RMSE_F=   31.72 meV / A
+2026-06-28 00:08:13.610 INFO: Epoch 52: head: Default, loss=0.01024535, RMSE_E_per_atom=    6.98 meV, RMSE_F=   31.56 meV / A
+2026-06-28 00:10:16.624 INFO: Epoch 53: head: Default, loss=0.01011471, RMSE_E_per_atom=    6.83 meV, RMSE_F=   31.35 meV / A
+2026-06-28 00:12:19.638 INFO: Epoch 54: head: Default, loss=0.01002019, RMSE_E_per_atom=    6.79 meV, RMSE_F=   31.20 meV / A
+2026-06-28 00:14:22.628 INFO: Epoch 55: head: Default, loss=0.00998379, RMSE_E_per_atom=    6.76 meV, RMSE_F=   31.14 meV / A
+2026-06-28 00:16:25.726 INFO: Epoch 56: head: Default, loss=0.00987070, RMSE_E_per_atom=    6.65 meV, RMSE_F=   30.96 meV / A
+2026-06-28 00:18:28.681 INFO: Epoch 57: head: Default, loss=0.00974552, RMSE_E_per_atom=    5.63 meV, RMSE_F=   30.77 meV / A
+2026-06-28 00:20:31.688 INFO: Epoch 58: head: Default, loss=0.00998628, RMSE_E_per_atom=   16.22 meV, RMSE_F=   31.09 meV / A
+2026-06-28 00:22:34.386 INFO: Epoch 59: head: Default, loss=0.00993314, RMSE_E_per_atom=   14.26 meV, RMSE_F=   31.02 meV / A
+2026-06-28 00:24:37.208 INFO: Epoch 60: head: Default, loss=0.00988232, RMSE_E_per_atom=   14.54 meV, RMSE_F=   30.94 meV / A
+2026-06-28 00:26:39.864 INFO: Epoch 61: head: Default, loss=0.00970601, RMSE_E_per_atom=   10.90 meV, RMSE_F=   30.69 meV / A
+2026-06-28 00:28:43.103 INFO: Epoch 62: head: Default, loss=0.00956684, RMSE_E_per_atom=    7.94 meV, RMSE_F=   30.48 meV / A
+2026-06-28 00:30:46.301 INFO: Epoch 63: head: Default, loss=0.00945337, RMSE_E_per_atom=    6.86 meV, RMSE_F=   30.29 meV / A
+2026-06-28 00:32:49.290 INFO: Epoch 64: head: Default, loss=0.00931648, RMSE_E_per_atom=    5.15 meV, RMSE_F=   30.08 meV / A
+2026-06-28 00:34:52.321 INFO: Epoch 65: head: Default, loss=0.00921181, RMSE_E_per_atom=    5.27 meV, RMSE_F=   29.91 meV / A
+2026-06-28 00:36:55.285 INFO: Epoch 66: head: Default, loss=0.00911444, RMSE_E_per_atom=    4.85 meV, RMSE_F=   29.75 meV / A
+2026-06-28 00:38:58.433 INFO: Epoch 67: head: Default, loss=0.00902146, RMSE_E_per_atom=    4.15 meV, RMSE_F=   29.60 meV / A
+2026-06-28 00:41:01.473 INFO: Epoch 68: head: Default, loss=0.00893969, RMSE_E_per_atom=    4.00 meV, RMSE_F=   29.47 meV / A
+2026-06-28 00:43:04.670 INFO: Epoch 69: head: Default, loss=0.00887641, RMSE_E_per_atom=    3.23 meV, RMSE_F=   29.36 meV / A
+2026-06-28 00:45:07.943 INFO: Epoch 70: head: Default, loss=0.00879168, RMSE_E_per_atom=    3.03 meV, RMSE_F=   29.22 meV / A
+2026-06-28 00:47:11.282 INFO: Epoch 71: head: Default, loss=0.00871577, RMSE_E_per_atom=    2.64 meV, RMSE_F=   29.10 meV / A
+2026-06-28 00:49:14.405 INFO: Epoch 72: head: Default, loss=0.00864405, RMSE_E_per_atom=    2.35 meV, RMSE_F=   28.98 meV / A
+2026-06-28 00:51:17.386 INFO: Epoch 73: head: Default, loss=0.00856864, RMSE_E_per_atom=    2.55 meV, RMSE_F=   28.85 meV / A
+2026-06-28 00:53:20.566 INFO: Epoch 74: head: Default, loss=0.00849781, RMSE_E_per_atom=    2.74 meV, RMSE_F=   28.73 meV / A
+2026-06-28 00:55:23.889 INFO: Epoch 75: head: Default, loss=0.00849140, RMSE_E_per_atom=    5.14 meV, RMSE_F=   28.72 meV / A
+2026-06-28 00:57:27.195 INFO: Epoch 76: head: Default, loss=0.00850852, RMSE_E_per_atom=    6.03 meV, RMSE_F=   28.74 meV / A
+2026-06-28 00:59:30.201 INFO: Epoch 77: head: Default, loss=0.00843554, RMSE_E_per_atom=    4.88 meV, RMSE_F=   28.62 meV / A
+2026-06-28 01:01:33.365 INFO: Epoch 78: head: Default, loss=0.00834746, RMSE_E_per_atom=    4.68 meV, RMSE_F=   28.47 meV / A
+2026-06-28 01:03:36.904 INFO: Epoch 79: head: Default, loss=0.00828702, RMSE_E_per_atom=    4.95 meV, RMSE_F=   28.37 meV / A
+2026-06-28 01:05:40.185 INFO: Epoch 80: head: Default, loss=0.00829520, RMSE_E_per_atom=    4.98 meV, RMSE_F=   28.38 meV / A
+2026-06-28 01:07:43.125 INFO: Epoch 81: head: Default, loss=0.00821081, RMSE_E_per_atom=    4.03 meV, RMSE_F=   28.23 meV / A
+2026-06-28 01:09:46.264 INFO: Epoch 82: head: Default, loss=0.00813789, RMSE_E_per_atom=    3.42 meV, RMSE_F=   28.11 meV / A
+2026-06-28 01:11:49.370 INFO: Epoch 83: head: Default, loss=0.00809235, RMSE_E_per_atom=    3.09 meV, RMSE_F=   28.04 meV / A
+2026-06-28 01:13:52.842 INFO: Epoch 84: head: Default, loss=0.00807465, RMSE_E_per_atom=    4.90 meV, RMSE_F=   28.01 meV / A
+2026-06-28 01:15:55.874 INFO: Epoch 85: head: Default, loss=0.00810591, RMSE_E_per_atom=    5.26 meV, RMSE_F=   28.07 meV / A
+2026-06-28 01:17:58.580 INFO: Epoch 86: head: Default, loss=0.00806874, RMSE_E_per_atom=    5.51 meV, RMSE_F=   27.99 meV / A
+2026-06-28 01:20:01.702 INFO: Epoch 87: head: Default, loss=0.00801158, RMSE_E_per_atom=    4.93 meV, RMSE_F=   27.90 meV / A
+2026-06-28 01:22:04.841 INFO: Epoch 88: head: Default, loss=0.00794781, RMSE_E_per_atom=    5.52 meV, RMSE_F=   27.79 meV / A
+2026-06-28 01:24:08.105 INFO: Epoch 89: head: Default, loss=0.00793095, RMSE_E_per_atom=    7.49 meV, RMSE_F=   27.75 meV / A
+2026-06-28 01:26:11.270 INFO: Epoch 90: head: Default, loss=0.00786201, RMSE_E_per_atom=    5.52 meV, RMSE_F=   27.64 meV / A
+2026-06-28 01:28:14.517 INFO: Epoch 91: head: Default, loss=0.00779557, RMSE_E_per_atom=    4.23 meV, RMSE_F=   27.52 meV / A
+2026-06-28 01:30:17.773 INFO: Epoch 92: head: Default, loss=0.00775437, RMSE_E_per_atom=    3.53 meV, RMSE_F=   27.45 meV / A
+2026-06-28 01:32:20.963 INFO: Epoch 93: head: Default, loss=0.00770775, RMSE_E_per_atom=    4.38 meV, RMSE_F=   27.37 meV / A
+2026-06-28 01:34:24.227 INFO: Epoch 94: head: Default, loss=0.00765397, RMSE_E_per_atom=    3.40 meV, RMSE_F=   27.27 meV / A
+2026-06-28 01:36:27.241 INFO: Epoch 95: head: Default, loss=0.00764378, RMSE_E_per_atom=    3.41 meV, RMSE_F=   27.25 meV / A
+2026-06-28 01:38:30.522 INFO: Epoch 96: head: Default, loss=0.00760778, RMSE_E_per_atom=    3.21 meV, RMSE_F=   27.19 meV / A
+2026-06-28 01:40:33.695 INFO: Epoch 97: head: Default, loss=0.00754769, RMSE_E_per_atom=    2.90 meV, RMSE_F=   27.08 meV / A
+2026-06-28 01:42:36.951 INFO: Epoch 98: head: Default, loss=0.00752388, RMSE_E_per_atom=    2.86 meV, RMSE_F=   27.04 meV / A
+2026-06-28 01:44:40.057 INFO: Epoch 99: head: Default, loss=0.00751831, RMSE_E_per_atom=    3.57 meV, RMSE_F=   27.03 meV / A
+2026-06-28 01:46:43.146 INFO: Epoch 100: head: Default, loss=0.00747852, RMSE_E_per_atom=    3.15 meV, RMSE_F=   26.96 meV / A
+2026-06-28 01:48:46.343 INFO: Epoch 101: head: Default, loss=0.00752018, RMSE_E_per_atom=    4.17 meV, RMSE_F=   27.04 meV / A
+2026-06-28 01:50:49.233 INFO: Epoch 102: head: Default, loss=0.00746362, RMSE_E_per_atom=    4.45 meV, RMSE_F=   26.93 meV / A
+2026-06-28 01:52:52.464 INFO: Epoch 103: head: Default, loss=0.00741371, RMSE_E_per_atom=    3.52 meV, RMSE_F=   26.84 meV / A
+2026-06-28 01:54:55.495 INFO: Epoch 104: head: Default, loss=0.00740641, RMSE_E_per_atom=    3.71 meV, RMSE_F=   26.83 meV / A
+2026-06-28 01:56:58.551 INFO: Epoch 105: head: Default, loss=0.00744653, RMSE_E_per_atom=    6.02 meV, RMSE_F=   26.89 meV / A
+2026-06-28 01:59:01.157 INFO: Epoch 106: head: Default, loss=0.00736797, RMSE_E_per_atom=    4.30 meV, RMSE_F=   26.76 meV / A
+2026-06-28 02:01:04.338 INFO: Epoch 107: head: Default, loss=0.00730094, RMSE_E_per_atom=    3.20 meV, RMSE_F=   26.64 meV / A
+2026-06-28 02:03:07.686 INFO: Epoch 108: head: Default, loss=0.00730588, RMSE_E_per_atom=    5.62 meV, RMSE_F=   26.64 meV / A
+2026-06-28 02:05:10.558 INFO: Epoch 109: head: Default, loss=0.00731594, RMSE_E_per_atom=    7.11 meV, RMSE_F=   26.66 meV / A
+2026-06-28 02:07:13.280 INFO: Epoch 110: head: Default, loss=0.00728165, RMSE_E_per_atom=    5.12 meV, RMSE_F=   26.60 meV / A
+2026-06-28 02:09:16.645 INFO: Epoch 111: head: Default, loss=0.00723405, RMSE_E_per_atom=    4.45 meV, RMSE_F=   26.51 meV / A
+2026-06-28 02:11:19.809 INFO: Epoch 112: head: Default, loss=0.00719163, RMSE_E_per_atom=    3.60 meV, RMSE_F=   26.44 meV / A
+2026-06-28 02:13:22.990 INFO: Epoch 113: head: Default, loss=0.00712992, RMSE_E_per_atom=    2.75 meV, RMSE_F=   26.32 meV / A
+2026-06-28 02:15:26.138 INFO: Epoch 114: head: Default, loss=0.00708700, RMSE_E_per_atom=    2.01 meV, RMSE_F=   26.25 meV / A
+2026-06-28 02:17:29.252 INFO: Epoch 115: head: Default, loss=0.00705183, RMSE_E_per_atom=    2.00 meV, RMSE_F=   26.18 meV / A
+2026-06-28 02:19:32.250 INFO: Epoch 116: head: Default, loss=0.00703755, RMSE_E_per_atom=    1.80 meV, RMSE_F=   26.16 meV / A
+2026-06-28 02:21:35.297 INFO: Epoch 117: head: Default, loss=0.00699851, RMSE_E_per_atom=    2.07 meV, RMSE_F=   26.09 meV / A
+2026-06-28 02:23:38.595 INFO: Epoch 118: head: Default, loss=0.00700251, RMSE_E_per_atom=    2.52 meV, RMSE_F=   26.09 meV / A
+2026-06-28 02:25:41.376 INFO: Epoch 119: head: Default, loss=0.00706497, RMSE_E_per_atom=    4.39 meV, RMSE_F=   26.20 meV / A
+2026-06-28 02:27:44.220 INFO: Epoch 120: head: Default, loss=0.00700950, RMSE_E_per_atom=    3.40 meV, RMSE_F=   26.10 meV / A
+2026-06-28 02:29:46.930 INFO: Epoch 121: head: Default, loss=0.00695286, RMSE_E_per_atom=    2.78 meV, RMSE_F=   26.00 meV / A
+2026-06-28 02:31:50.185 INFO: Epoch 122: head: Default, loss=0.00693530, RMSE_E_per_atom=    2.18 meV, RMSE_F=   25.96 meV / A
+2026-06-28 02:33:53.433 INFO: Epoch 123: head: Default, loss=0.00698123, RMSE_E_per_atom=    4.40 meV, RMSE_F=   26.03 meV / A
+2026-06-28 02:35:56.264 INFO: Epoch 124: head: Default, loss=0.00693624, RMSE_E_per_atom=    3.98 meV, RMSE_F=   25.96 meV / A
+2026-06-28 02:37:58.937 INFO: Epoch 125: head: Default, loss=0.00687436, RMSE_E_per_atom=    3.16 meV, RMSE_F=   25.85 meV / A
+2026-06-28 02:40:02.192 INFO: Epoch 126: head: Default, loss=0.00687804, RMSE_E_per_atom=    4.38 meV, RMSE_F=   25.86 meV / A
+2026-06-28 02:42:04.782 INFO: Epoch 127: head: Default, loss=0.00684238, RMSE_E_per_atom=    3.59 meV, RMSE_F=   25.79 meV / A
+2026-06-28 02:44:07.863 INFO: Epoch 128: head: Default, loss=0.00680005, RMSE_E_per_atom=    2.44 meV, RMSE_F=   25.71 meV / A
+2026-06-28 02:46:11.077 INFO: Epoch 129: head: Default, loss=0.00676454, RMSE_E_per_atom=    1.91 meV, RMSE_F=   25.65 meV / A
+2026-06-28 02:48:14.092 INFO: Epoch 130: head: Default, loss=0.00673903, RMSE_E_per_atom=    1.42 meV, RMSE_F=   25.60 meV / A
+2026-06-28 02:50:17.247 INFO: Epoch 131: head: Default, loss=0.00671432, RMSE_E_per_atom=    1.33 meV, RMSE_F=   25.56 meV / A
+2026-06-28 02:52:20.354 INFO: Epoch 132: head: Default, loss=0.00672630, RMSE_E_per_atom=    2.55 meV, RMSE_F=   25.58 meV / A
+2026-06-28 02:54:23.151 INFO: Epoch 133: head: Default, loss=0.00670088, RMSE_E_per_atom=    2.38 meV, RMSE_F=   25.54 meV / A
+2026-06-28 02:56:26.316 INFO: Epoch 134: head: Default, loss=0.00669504, RMSE_E_per_atom=    1.68 meV, RMSE_F=   25.53 meV / A
+2026-06-28 02:58:29.438 INFO: Epoch 135: head: Default, loss=0.00664725, RMSE_E_per_atom=    2.07 meV, RMSE_F=   25.43 meV / A
+2026-06-28 03:00:32.503 INFO: Epoch 136: head: Default, loss=0.00665608, RMSE_E_per_atom=    3.16 meV, RMSE_F=   25.45 meV / A
+2026-06-28 03:02:35.217 INFO: Epoch 137: head: Default, loss=0.00660957, RMSE_E_per_atom=    2.64 meV, RMSE_F=   25.36 meV / A
+2026-06-28 03:04:38.373 INFO: Epoch 138: head: Default, loss=0.00659073, RMSE_E_per_atom=    2.01 meV, RMSE_F=   25.32 meV / A
+2026-06-28 03:06:41.454 INFO: Epoch 139: head: Default, loss=0.00657960, RMSE_E_per_atom=    1.86 meV, RMSE_F=   25.29 meV / A
+2026-06-28 03:08:44.718 INFO: Epoch 140: head: Default, loss=0.00655915, RMSE_E_per_atom=    2.61 meV, RMSE_F=   25.25 meV / A
+2026-06-28 03:10:47.849 INFO: Epoch 141: head: Default, loss=0.00654728, RMSE_E_per_atom=    2.21 meV, RMSE_F=   25.24 meV / A
+2026-06-28 03:12:50.947 INFO: Epoch 142: head: Default, loss=0.00650901, RMSE_E_per_atom=    1.79 meV, RMSE_F=   25.16 meV / A
+2026-06-28 03:14:54.144 INFO: Epoch 143: head: Default, loss=0.00649543, RMSE_E_per_atom=    1.65 meV, RMSE_F=   25.14 meV / A
+2026-06-28 03:16:57.433 INFO: Epoch 144: head: Default, loss=0.00649136, RMSE_E_per_atom=    1.58 meV, RMSE_F=   25.13 meV / A
+2026-06-28 03:19:00.647 INFO: Epoch 145: head: Default, loss=0.00650685, RMSE_E_per_atom=    2.58 meV, RMSE_F=   25.15 meV / A
+2026-06-28 03:21:03.354 INFO: Epoch 146: head: Default, loss=0.00649499, RMSE_E_per_atom=    2.38 meV, RMSE_F=   25.13 meV / A
+2026-06-28 03:23:05.960 INFO: Epoch 147: head: Default, loss=0.00644841, RMSE_E_per_atom=    2.20 meV, RMSE_F=   25.04 meV / A
+2026-06-28 03:25:09.157 INFO: Epoch 148: head: Default, loss=0.00643325, RMSE_E_per_atom=    1.98 meV, RMSE_F=   25.02 meV / A
+2026-06-28 03:27:12.222 INFO: Epoch 149: head: Default, loss=0.00639585, RMSE_E_per_atom=    1.67 meV, RMSE_F=   24.94 meV / A
+2026-06-28 03:29:15.169 INFO: Epoch 150: head: Default, loss=0.00641038, RMSE_E_per_atom=    1.99 meV, RMSE_F=   24.97 meV / A
+2026-06-28 03:31:17.867 INFO: Epoch 151: head: Default, loss=0.00637437, RMSE_E_per_atom=    1.93 meV, RMSE_F=   24.90 meV / A
+2026-06-28 03:33:21.007 INFO: Epoch 152: head: Default, loss=0.00637440, RMSE_E_per_atom=    1.70 meV, RMSE_F=   24.90 meV / A
+2026-06-28 03:35:23.762 INFO: Epoch 153: head: Default, loss=0.00798696, RMSE_E_per_atom=   18.86 meV, RMSE_F=   27.66 meV / A
+2026-06-28 03:37:26.419 INFO: Epoch 154: head: Default, loss=0.00744883, RMSE_E_per_atom=   14.75 meV, RMSE_F=   26.80 meV / A
+2026-06-28 03:39:29.767 INFO: Epoch 155: head: Default, loss=0.00698751, RMSE_E_per_atom=    9.61 meV, RMSE_F=   26.02 meV / A
+2026-06-28 03:41:33.328 INFO: Epoch 156: head: Default, loss=0.00679279, RMSE_E_per_atom=    6.86 meV, RMSE_F=   25.68 meV / A
+2026-06-28 03:43:36.794 INFO: Epoch 157: head: Default, loss=0.00663782, RMSE_E_per_atom=    5.05 meV, RMSE_F=   25.40 meV / A
+2026-06-28 03:45:39.843 INFO: Epoch 158: head: Default, loss=0.00654733, RMSE_E_per_atom=    3.56 meV, RMSE_F=   25.23 meV / A
+2026-06-28 03:47:43.257 INFO: Epoch 159: head: Default, loss=0.00647575, RMSE_E_per_atom=    2.77 meV, RMSE_F=   25.10 meV / A
+2026-06-28 03:49:45.929 INFO: Epoch 160: head: Default, loss=0.00642521, RMSE_E_per_atom=    2.17 meV, RMSE_F=   25.00 meV / A
+2026-06-28 03:51:48.744 INFO: Epoch 161: head: Default, loss=0.00638507, RMSE_E_per_atom=    2.48 meV, RMSE_F=   24.92 meV / A
+2026-06-28 03:53:51.741 INFO: Epoch 162: head: Default, loss=0.00638753, RMSE_E_per_atom=    2.76 meV, RMSE_F=   24.92 meV / A
+2026-06-28 03:55:54.523 INFO: Epoch 163: head: Default, loss=0.00637977, RMSE_E_per_atom=    2.90 meV, RMSE_F=   24.91 meV / A
+2026-06-28 03:57:57.287 INFO: Epoch 164: head: Default, loss=0.00635799, RMSE_E_per_atom=    2.46 meV, RMSE_F=   24.87 meV / A
+2026-06-28 04:00:00.285 INFO: Epoch 165: head: Default, loss=0.00631920, RMSE_E_per_atom=    2.15 meV, RMSE_F=   24.79 meV / A
+2026-06-28 04:02:03.690 INFO: Epoch 166: head: Default, loss=0.00630495, RMSE_E_per_atom=    2.19 meV, RMSE_F=   24.77 meV / A
+2026-06-28 04:04:06.805 INFO: Epoch 167: head: Default, loss=0.00626714, RMSE_E_per_atom=    1.55 meV, RMSE_F=   24.70 meV / A
+2026-06-28 04:06:09.977 INFO: Epoch 168: head: Default, loss=0.00625990, RMSE_E_per_atom=    1.52 meV, RMSE_F=   24.68 meV / A
+2026-06-28 04:08:12.909 INFO: Epoch 169: head: Default, loss=0.00624998, RMSE_E_per_atom=    1.33 meV, RMSE_F=   24.67 meV / A
+2026-06-28 04:10:15.898 INFO: Epoch 170: head: Default, loss=0.00624206, RMSE_E_per_atom=    1.21 meV, RMSE_F=   24.65 meV / A
+2026-06-28 04:12:19.020 INFO: Epoch 171: head: Default, loss=0.00621013, RMSE_E_per_atom=    1.43 meV, RMSE_F=   24.59 meV / A
+2026-06-28 04:14:22.135 INFO: Epoch 172: head: Default, loss=0.00620896, RMSE_E_per_atom=    2.13 meV, RMSE_F=   24.58 meV / A
+2026-06-28 04:16:25.249 INFO: Epoch 173: head: Default, loss=0.00624878, RMSE_E_per_atom=    4.25 meV, RMSE_F=   24.65 meV / A
+2026-06-28 04:18:28.272 INFO: Epoch 174: head: Default, loss=0.00625516, RMSE_E_per_atom=    3.67 meV, RMSE_F=   24.66 meV / A
+2026-06-28 04:20:31.094 INFO: Epoch 175: head: Default, loss=0.00621149, RMSE_E_per_atom=    2.29 meV, RMSE_F=   24.58 meV / A
+2026-06-28 04:22:33.809 INFO: Epoch 176: head: Default, loss=0.00616966, RMSE_E_per_atom=    1.98 meV, RMSE_F=   24.50 meV / A
+2026-06-28 04:24:36.865 INFO: Epoch 177: head: Default, loss=0.00615170, RMSE_E_per_atom=    2.32 meV, RMSE_F=   24.47 meV / A
+2026-06-28 04:26:39.796 INFO: Epoch 178: head: Default, loss=0.00614256, RMSE_E_per_atom=    1.97 meV, RMSE_F=   24.45 meV / A
+2026-06-28 04:28:42.785 INFO: Epoch 179: head: Default, loss=0.00611838, RMSE_E_per_atom=    1.56 meV, RMSE_F=   24.40 meV / A
+2026-06-28 04:30:45.908 INFO: Epoch 180: head: Default, loss=0.00610878, RMSE_E_per_atom=    1.49 meV, RMSE_F=   24.39 meV / A
+2026-06-28 04:32:49.097 INFO: Epoch 181: head: Default, loss=0.00606411, RMSE_E_per_atom=    1.11 meV, RMSE_F=   24.29 meV / A
+2026-06-28 04:34:52.428 INFO: Epoch 182: head: Default, loss=0.00605646, RMSE_E_per_atom=    1.12 meV, RMSE_F=   24.28 meV / A
+2026-06-28 04:36:55.692 INFO: Epoch 183: head: Default, loss=0.00603273, RMSE_E_per_atom=    1.68 meV, RMSE_F=   24.23 meV / A
+2026-06-28 04:38:58.648 INFO: Epoch 184: head: Default, loss=0.00605103, RMSE_E_per_atom=    1.67 meV, RMSE_F=   24.27 meV / A
+2026-06-28 04:41:01.546 INFO: Epoch 185: head: Default, loss=0.00603442, RMSE_E_per_atom=    1.42 meV, RMSE_F=   24.23 meV / A
+2026-06-28 04:43:04.277 INFO: Epoch 186: head: Default, loss=0.00603594, RMSE_E_per_atom=    1.50 meV, RMSE_F=   24.23 meV / A
+2026-06-28 04:45:06.917 INFO: Epoch 187: head: Default, loss=0.00608590, RMSE_E_per_atom=    2.35 meV, RMSE_F=   24.34 meV / A
+2026-06-28 04:47:09.564 INFO: Epoch 188: head: Default, loss=0.00605124, RMSE_E_per_atom=    1.77 meV, RMSE_F=   24.27 meV / A
+2026-06-28 04:49:12.212 INFO: Epoch 189: head: Default, loss=0.00601631, RMSE_E_per_atom=    1.56 meV, RMSE_F=   24.20 meV / A
+2026-06-28 04:51:15.460 INFO: Epoch 190: head: Default, loss=0.00601144, RMSE_E_per_atom=    1.53 meV, RMSE_F=   24.19 meV / A
+2026-06-28 04:53:18.807 INFO: Epoch 191: head: Default, loss=0.00601253, RMSE_E_per_atom=    1.75 meV, RMSE_F=   24.19 meV / A
+2026-06-28 04:55:21.697 INFO: Epoch 192: head: Default, loss=0.00597686, RMSE_E_per_atom=    1.44 meV, RMSE_F=   24.12 meV / A
+2026-06-28 04:57:25.037 INFO: Epoch 193: head: Default, loss=0.00597715, RMSE_E_per_atom=    1.16 meV, RMSE_F=   24.12 meV / A
+2026-06-28 04:59:27.693 INFO: Epoch 194: head: Default, loss=0.00605854, RMSE_E_per_atom=    4.90 meV, RMSE_F=   24.28 meV / A
+2026-06-28 05:01:30.441 INFO: Epoch 195: head: Default, loss=0.00612622, RMSE_E_per_atom=    5.64 meV, RMSE_F=   24.41 meV / A
+2026-06-28 05:03:33.189 INFO: Epoch 196: head: Default, loss=0.00612998, RMSE_E_per_atom=    6.25 meV, RMSE_F=   24.40 meV / A
+2026-06-28 05:05:35.770 INFO: Epoch 197: head: Default, loss=0.00607587, RMSE_E_per_atom=    4.34 meV, RMSE_F=   24.30 meV / A
+2026-06-28 05:07:38.409 INFO: Epoch 198: head: Default, loss=0.00601697, RMSE_E_per_atom=    2.67 meV, RMSE_F=   24.20 meV / A
+2026-06-28 05:09:41.099 INFO: Epoch 199: head: Default, loss=0.00597816, RMSE_E_per_atom=    2.01 meV, RMSE_F=   24.12 meV / A
+2026-06-28 05:09:41.100 INFO: Changing loss based on Stage Two Weights
+2026-06-28 05:11:43.755 INFO: Epoch 200: head: Default, loss=0.00690334, RMSE_E_per_atom=    1.21 meV, RMSE_F=   25.61 meV / A
+2026-06-28 05:13:47.003 INFO: Epoch 201: head: Default, loss=0.00709780, RMSE_E_per_atom=    0.66 meV, RMSE_F=   26.19 meV / A
+2026-06-28 05:15:49.775 INFO: Epoch 202: head: Default, loss=0.00673441, RMSE_E_per_atom=    0.34 meV, RMSE_F=   25.57 meV / A
+2026-06-28 05:17:52.965 INFO: Epoch 203: head: Default, loss=0.00648531, RMSE_E_per_atom=    0.28 meV, RMSE_F=   25.10 meV / A
+2026-06-28 05:19:56.054 INFO: Epoch 204: head: Default, loss=0.00634733, RMSE_E_per_atom=    0.27 meV, RMSE_F=   24.83 meV / A
+2026-06-28 05:21:59.135 INFO: Epoch 205: head: Default, loss=0.00626627, RMSE_E_per_atom=    0.27 meV, RMSE_F=   24.68 meV / A
+2026-06-28 05:24:02.291 INFO: Epoch 206: head: Default, loss=0.00621547, RMSE_E_per_atom=    0.26 meV, RMSE_F=   24.58 meV / A
+2026-06-28 05:26:05.397 INFO: Epoch 207: head: Default, loss=0.00617885, RMSE_E_per_atom=    0.26 meV, RMSE_F=   24.50 meV / A
+2026-06-28 05:28:08.536 INFO: Epoch 208: head: Default, loss=0.00614823, RMSE_E_per_atom=    0.25 meV, RMSE_F=   24.44 meV / A
+2026-06-28 05:30:11.792 INFO: Epoch 209: head: Default, loss=0.00612842, RMSE_E_per_atom=    0.25 meV, RMSE_F=   24.41 meV / A
+2026-06-28 05:32:15.148 INFO: Epoch 210: head: Default, loss=0.00610994, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.37 meV / A
+2026-06-28 05:34:18.271 INFO: Epoch 211: head: Default, loss=0.00609662, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.34 meV / A
+2026-06-28 05:36:21.260 INFO: Epoch 212: head: Default, loss=0.00608685, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.33 meV / A
+2026-06-28 05:38:24.524 INFO: Epoch 213: head: Default, loss=0.00607523, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.30 meV / A
+2026-06-28 05:40:27.880 INFO: Epoch 214: head: Default, loss=0.00606555, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.28 meV / A
+2026-06-28 05:42:30.986 INFO: Epoch 215: head: Default, loss=0.00605528, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.26 meV / A
+2026-06-28 05:44:34.233 INFO: Epoch 216: head: Default, loss=0.00604609, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.25 meV / A
+2026-06-28 05:46:37.489 INFO: Epoch 217: head: Default, loss=0.00603979, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.23 meV / A
+2026-06-28 05:48:40.704 INFO: Epoch 218: head: Default, loss=0.00603404, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.22 meV / A
+2026-06-28 05:50:43.985 INFO: Epoch 219: head: Default, loss=0.00602263, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.20 meV / A
+2026-06-28 05:52:47.232 INFO: Epoch 220: head: Default, loss=0.00601632, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.19 meV / A
+2026-06-28 05:54:50.380 INFO: Epoch 221: head: Default, loss=0.00601130, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.18 meV / A
+2026-06-28 05:56:53.452 INFO: Epoch 222: head: Default, loss=0.00600639, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.17 meV / A
+2026-06-28 05:58:56.900 INFO: Epoch 223: head: Default, loss=0.00600051, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.16 meV / A
+2026-06-28 06:01:00.147 INFO: Epoch 224: head: Default, loss=0.00599750, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.15 meV / A
+2026-06-28 06:03:03.303 INFO: Epoch 225: head: Default, loss=0.00599099, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.14 meV / A
+2026-06-28 06:05:06.518 INFO: Epoch 226: head: Default, loss=0.00598562, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.13 meV / A
+2026-06-28 06:07:09.657 INFO: Epoch 227: head: Default, loss=0.00598322, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.12 meV / A
+2026-06-28 06:09:12.854 INFO: Epoch 228: head: Default, loss=0.00597863, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.11 meV / A
+2026-06-28 06:11:16.085 INFO: Epoch 229: head: Default, loss=0.00597359, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.10 meV / A
+2026-06-28 06:13:19.183 INFO: Epoch 230: head: Default, loss=0.00597096, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.10 meV / A
+2026-06-28 06:15:22.405 INFO: Epoch 231: head: Default, loss=0.00596507, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.09 meV / A
+2026-06-28 06:17:25.562 INFO: Epoch 232: head: Default, loss=0.00596013, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.08 meV / A
+2026-06-28 06:19:28.967 INFO: Epoch 233: head: Default, loss=0.00595710, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.07 meV / A
+2026-06-28 06:21:32.065 INFO: Epoch 234: head: Default, loss=0.00595569, RMSE_E_per_atom=    0.24 meV, RMSE_F=   24.07 meV / A
+2026-06-28 06:23:37.604 INFO: Epoch 235: head: Default, loss=0.00595427, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.07 meV / A
+2026-06-28 06:25:44.463 INFO: Epoch 236: head: Default, loss=0.00595046, RMSE_E_per_atom=    0.22 meV, RMSE_F=   24.06 meV / A
+2026-06-28 06:27:47.477 INFO: Epoch 237: head: Default, loss=0.00594671, RMSE_E_per_atom=    0.22 meV, RMSE_F=   24.05 meV / A
+2026-06-28 06:29:50.483 INFO: Epoch 238: head: Default, loss=0.00594302, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.05 meV / A
+2026-06-28 06:31:53.481 INFO: Epoch 239: head: Default, loss=0.00594145, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.04 meV / A
+2026-06-28 06:33:56.479 INFO: Epoch 240: head: Default, loss=0.00593687, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.03 meV / A
+2026-06-28 06:35:59.693 INFO: Epoch 241: head: Default, loss=0.00593536, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.03 meV / A
+2026-06-28 06:38:02.665 INFO: Epoch 242: head: Default, loss=0.00593315, RMSE_E_per_atom=    0.22 meV, RMSE_F=   24.03 meV / A
+2026-06-28 06:40:05.738 INFO: Epoch 243: head: Default, loss=0.00592714, RMSE_E_per_atom=    0.22 meV, RMSE_F=   24.02 meV / A
+2026-06-28 06:42:08.769 INFO: Epoch 244: head: Default, loss=0.00592728, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.01 meV / A
+2026-06-28 06:44:11.501 INFO: Epoch 245: head: Default, loss=0.00592122, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.00 meV / A
+2026-06-28 06:46:14.764 INFO: Epoch 246: head: Default, loss=0.00592105, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.00 meV / A
+2026-06-28 06:48:18.104 INFO: Epoch 247: head: Default, loss=0.00591801, RMSE_E_per_atom=    0.23 meV, RMSE_F=   24.00 meV / A
+2026-06-28 06:50:21.344 INFO: Epoch 248: head: Default, loss=0.00591657, RMSE_E_per_atom=    0.24 meV, RMSE_F=   23.99 meV / A
+2026-06-28 06:52:24.508 INFO: Epoch 249: head: Default, loss=0.00591265, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.99 meV / A
+2026-06-28 06:54:27.721 INFO: Epoch 250: head: Default, loss=0.00590944, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.98 meV / A
+2026-06-28 06:56:30.761 INFO: Epoch 251: head: Default, loss=0.00590882, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.98 meV / A
+2026-06-28 06:58:33.734 INFO: Epoch 252: head: Default, loss=0.00590723, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.98 meV / A
+2026-06-28 07:00:36.665 INFO: Epoch 253: head: Default, loss=0.00590478, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.97 meV / A
+2026-06-28 07:02:39.871 INFO: Epoch 254: head: Default, loss=0.00590231, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.97 meV / A
+2026-06-28 07:04:43.043 INFO: Epoch 255: head: Default, loss=0.00589959, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.96 meV / A
+2026-06-28 07:06:46.224 INFO: Epoch 256: head: Default, loss=0.00589726, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.96 meV / A
+2026-06-28 07:08:49.308 INFO: Epoch 257: head: Default, loss=0.00589743, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.96 meV / A
+2026-06-28 07:10:51.947 INFO: Epoch 258: head: Default, loss=0.00589416, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.95 meV / A
+2026-06-28 07:12:54.928 INFO: Epoch 259: head: Default, loss=0.00589237, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.95 meV / A
+2026-06-28 07:14:57.942 INFO: Epoch 260: head: Default, loss=0.00589023, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.94 meV / A
+2026-06-28 07:17:00.848 INFO: Epoch 261: head: Default, loss=0.00588547, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.93 meV / A
+2026-06-28 07:19:03.771 INFO: Epoch 262: head: Default, loss=0.00588506, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.93 meV / A
+2026-06-28 07:21:06.910 INFO: Epoch 263: head: Default, loss=0.00588415, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.93 meV / A
+2026-06-28 07:23:10.018 INFO: Epoch 264: head: Default, loss=0.00587970, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.92 meV / A
+2026-06-28 07:25:13.049 INFO: Epoch 265: head: Default, loss=0.00587897, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.92 meV / A
+2026-06-28 07:27:16.213 INFO: Epoch 266: head: Default, loss=0.00587884, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.92 meV / A
+2026-06-28 07:29:19.369 INFO: Epoch 267: head: Default, loss=0.00587564, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.91 meV / A
+2026-06-28 07:31:22.258 INFO: Epoch 268: head: Default, loss=0.00587302, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.91 meV / A
+2026-06-28 07:33:25.289 INFO: Epoch 269: head: Default, loss=0.00587278, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.91 meV / A
+2026-06-28 07:35:28.387 INFO: Epoch 270: head: Default, loss=0.00586996, RMSE_E_per_atom=    0.24 meV, RMSE_F=   23.90 meV / A
+2026-06-28 07:37:31.535 INFO: Epoch 271: head: Default, loss=0.00586678, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.89 meV / A
+2026-06-28 07:39:34.518 INFO: Epoch 272: head: Default, loss=0.00586697, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.89 meV / A
+2026-06-28 07:41:37.299 INFO: Epoch 273: head: Default, loss=0.00586218, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.89 meV / A
+2026-06-28 07:43:40.572 INFO: Epoch 274: head: Default, loss=0.00586210, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.89 meV / A
+2026-06-28 07:45:43.528 INFO: Epoch 275: head: Default, loss=0.00586013, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.88 meV / A
+2026-06-28 07:47:46.859 INFO: Epoch 276: head: Default, loss=0.00585889, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.88 meV / A
+2026-06-28 07:49:49.940 INFO: Epoch 277: head: Default, loss=0.00585882, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.88 meV / A
+2026-06-28 07:51:53.070 INFO: Epoch 278: head: Default, loss=0.00585674, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.87 meV / A
+2026-06-28 07:53:56.034 INFO: Epoch 279: head: Default, loss=0.00585173, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.86 meV / A
+2026-06-28 07:55:59.048 INFO: Epoch 280: head: Default, loss=0.00585146, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.86 meV / A
+2026-06-28 07:58:38.750 INFO: Epoch 281: head: Default, loss=0.00585006, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.86 meV / A
+2026-06-28 08:00:43.430 INFO: Epoch 282: head: Default, loss=0.00584869, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.86 meV / A
+2026-06-28 08:02:46.585 INFO: Epoch 283: head: Default, loss=0.00584714, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.86 meV / A
+2026-06-28 08:04:49.650 INFO: Epoch 284: head: Default, loss=0.00584540, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.85 meV / A
+2026-06-28 08:06:52.123 INFO: Epoch 285: head: Default, loss=0.00584312, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.85 meV / A
+2026-06-28 08:08:54.451 INFO: Epoch 286: head: Default, loss=0.00584152, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.84 meV / A
+2026-06-28 08:10:57.624 INFO: Epoch 287: head: Default, loss=0.00584053, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.84 meV / A
+2026-06-28 08:13:00.763 INFO: Epoch 288: head: Default, loss=0.00583950, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.84 meV / A
+2026-06-28 08:15:03.836 INFO: Epoch 289: head: Default, loss=0.00583674, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.83 meV / A
+2026-06-28 08:17:06.892 INFO: Epoch 290: head: Default, loss=0.00583728, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.84 meV / A
+2026-06-28 08:19:09.556 INFO: Epoch 291: head: Default, loss=0.00583348, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.83 meV / A
+2026-06-28 08:21:12.629 INFO: Epoch 292: head: Default, loss=0.00583160, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.82 meV / A
+2026-06-28 08:23:15.723 INFO: Epoch 293: head: Default, loss=0.00582954, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.82 meV / A
+2026-06-28 08:25:18.770 INFO: Epoch 294: head: Default, loss=0.00582845, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.82 meV / A
+2026-06-28 08:27:22.010 INFO: Epoch 295: head: Default, loss=0.00582715, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.82 meV / A
+2026-06-28 08:29:24.966 INFO: Epoch 296: head: Default, loss=0.00582668, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.81 meV / A
+2026-06-28 08:31:28.030 INFO: Epoch 297: head: Default, loss=0.00582381, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.81 meV / A
+2026-06-28 08:33:31.211 INFO: Epoch 298: head: Default, loss=0.00582631, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.81 meV / A
+2026-06-28 08:35:33.850 INFO: Epoch 299: head: Default, loss=0.00582222, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.81 meV / A
+2026-06-28 08:37:36.915 INFO: Epoch 300: head: Default, loss=0.00582197, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.81 meV / A
+2026-06-28 08:39:39.804 INFO: Epoch 301: head: Default, loss=0.00581795, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.80 meV / A
+2026-06-28 08:41:42.943 INFO: Epoch 302: head: Default, loss=0.00581785, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.80 meV / A
+2026-06-28 08:43:45.899 INFO: Epoch 303: head: Default, loss=0.00581629, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.79 meV / A
+2026-06-28 08:45:48.964 INFO: Epoch 304: head: Default, loss=0.00581482, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.79 meV / A
+2026-06-28 08:47:52.161 INFO: Epoch 305: head: Default, loss=0.00581386, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.79 meV / A
+2026-06-28 08:49:55.276 INFO: Epoch 306: head: Default, loss=0.00581239, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.79 meV / A
+2026-06-28 08:51:58.399 INFO: Epoch 307: head: Default, loss=0.00580994, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.78 meV / A
+2026-06-28 08:54:01.421 INFO: Epoch 308: head: Default, loss=0.00580856, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.78 meV / A
+2026-06-28 08:56:04.402 INFO: Epoch 309: head: Default, loss=0.00580666, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.77 meV / A
+2026-06-28 08:58:07.574 INFO: Epoch 310: head: Default, loss=0.00580798, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.78 meV / A
+2026-06-28 09:00:09.897 INFO: Epoch 311: head: Default, loss=0.00580289, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.77 meV / A
+2026-06-28 09:02:12.578 INFO: Epoch 312: head: Default, loss=0.00580470, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.77 meV / A
+2026-06-28 09:04:14.651 INFO: Epoch 313: head: Default, loss=0.00580219, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.77 meV / A
+2026-06-28 09:06:17.774 INFO: Epoch 314: head: Default, loss=0.00580112, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.76 meV / A
+2026-06-28 09:08:20.888 INFO: Epoch 315: head: Default, loss=0.00580138, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.76 meV / A
+2026-06-28 09:10:23.604 INFO: Epoch 316: head: Default, loss=0.00579752, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.76 meV / A
+2026-06-28 09:12:26.611 INFO: Epoch 317: head: Default, loss=0.00579496, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.75 meV / A
+2026-06-28 09:14:29.733 INFO: Epoch 318: head: Default, loss=0.00579557, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.75 meV / A
+2026-06-28 09:16:32.781 INFO: Epoch 319: head: Default, loss=0.00579426, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.75 meV / A
+2026-06-28 09:18:35.762 INFO: Epoch 320: head: Default, loss=0.00579337, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.75 meV / A
+2026-06-28 09:20:39.051 INFO: Epoch 321: head: Default, loss=0.00579237, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.75 meV / A
+2026-06-28 09:22:42.407 INFO: Epoch 322: head: Default, loss=0.00579144, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.74 meV / A
+2026-06-28 09:24:45.905 INFO: Epoch 323: head: Default, loss=0.00579198, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.75 meV / A
+2026-06-28 09:26:48.741 INFO: Epoch 324: head: Default, loss=0.00579018, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.74 meV / A
+2026-06-28 09:28:51.816 INFO: Epoch 325: head: Default, loss=0.00578791, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.74 meV / A
+2026-06-28 09:30:55.131 INFO: Epoch 326: head: Default, loss=0.00578363, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.73 meV / A
+2026-06-28 09:32:58.287 INFO: Epoch 327: head: Default, loss=0.00578385, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.73 meV / A
+2026-06-28 09:35:00.976 INFO: Epoch 328: head: Default, loss=0.00578219, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.73 meV / A
+2026-06-28 09:37:04.157 INFO: Epoch 329: head: Default, loss=0.00578229, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.73 meV / A
+2026-06-28 09:39:06.988 INFO: Epoch 330: head: Default, loss=0.00577928, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.72 meV / A
+2026-06-28 09:41:10.236 INFO: Epoch 331: head: Default, loss=0.00577981, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.72 meV / A
+2026-06-28 09:43:13.083 INFO: Epoch 332: head: Default, loss=0.00577418, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.71 meV / A
+2026-06-28 09:45:16.273 INFO: Epoch 333: head: Default, loss=0.00577471, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.71 meV / A
+2026-06-28 09:47:19.012 INFO: Epoch 334: head: Default, loss=0.00577427, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.71 meV / A
+2026-06-28 09:49:21.901 INFO: Epoch 335: head: Default, loss=0.00577251, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.71 meV / A
+2026-06-28 09:51:24.882 INFO: Epoch 336: head: Default, loss=0.00577178, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.70 meV / A
+2026-06-28 09:53:28.038 INFO: Epoch 337: head: Default, loss=0.00577385, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.71 meV / A
+2026-06-28 09:55:30.868 INFO: Epoch 338: head: Default, loss=0.00576976, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.70 meV / A
+2026-06-28 09:58:02.357 INFO: Epoch 339: head: Default, loss=0.00577165, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.70 meV / A
+2026-06-28 10:00:06.912 INFO: Epoch 340: head: Default, loss=0.00576703, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.69 meV / A
+2026-06-28 10:02:10.027 INFO: Epoch 341: head: Default, loss=0.00576651, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.69 meV / A
+2026-06-28 10:04:13.366 INFO: Epoch 342: head: Default, loss=0.00576544, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.69 meV / A
+2026-06-28 10:06:16.564 INFO: Epoch 343: head: Default, loss=0.00576382, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.69 meV / A
+2026-06-28 10:08:19.695 INFO: Epoch 344: head: Default, loss=0.00576207, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.69 meV / A
+2026-06-28 10:10:22.692 INFO: Epoch 345: head: Default, loss=0.00576087, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.68 meV / A
+2026-06-28 10:12:25.881 INFO: Epoch 346: head: Default, loss=0.00575977, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.68 meV / A
+2026-06-28 10:14:29.029 INFO: Epoch 347: head: Default, loss=0.00575735, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.67 meV / A
+2026-06-28 10:16:32.360 INFO: Epoch 348: head: Default, loss=0.00575657, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.67 meV / A
+2026-06-28 10:18:35.765 INFO: Epoch 349: head: Default, loss=0.00575952, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.68 meV / A
+2026-06-28 10:20:38.588 INFO: Epoch 350: head: Default, loss=0.00575597, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.67 meV / A
+2026-06-28 10:22:41.894 INFO: Epoch 351: head: Default, loss=0.00575479, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.67 meV / A
+2026-06-28 10:24:45.102 INFO: Epoch 352: head: Default, loss=0.00575551, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.67 meV / A
+2026-06-28 10:26:48.067 INFO: Epoch 353: head: Default, loss=0.00575115, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.66 meV / A
+2026-06-28 10:28:51.098 INFO: Epoch 354: head: Default, loss=0.00575027, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.66 meV / A
+2026-06-28 10:30:54.329 INFO: Epoch 355: head: Default, loss=0.00575092, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.66 meV / A
+2026-06-28 10:32:57.193 INFO: Epoch 356: head: Default, loss=0.00574816, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.66 meV / A
+2026-06-28 10:35:00.341 INFO: Epoch 357: head: Default, loss=0.00574682, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.65 meV / A
+2026-06-28 10:37:03.497 INFO: Epoch 358: head: Default, loss=0.00574913, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.66 meV / A
+2026-06-28 10:39:06.294 INFO: Epoch 359: head: Default, loss=0.00574677, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.65 meV / A
+2026-06-28 10:41:09.417 INFO: Epoch 360: head: Default, loss=0.00574509, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.65 meV / A
+2026-06-28 10:43:12.931 INFO: Epoch 361: head: Default, loss=0.00574462, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.65 meV / A
+2026-06-28 10:45:15.921 INFO: Epoch 362: head: Default, loss=0.00574329, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.65 meV / A
+2026-06-28 10:47:19.052 INFO: Epoch 363: head: Default, loss=0.00573883, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.64 meV / A
+2026-06-28 10:49:22.249 INFO: Epoch 364: head: Default, loss=0.00573938, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.64 meV / A
+2026-06-28 10:51:25.047 INFO: Epoch 365: head: Default, loss=0.00574210, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.64 meV / A
+2026-06-28 10:53:27.894 INFO: Epoch 366: head: Default, loss=0.00573902, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.64 meV / A
+2026-06-28 10:55:30.734 INFO: Epoch 367: head: Default, loss=0.00573760, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.64 meV / A
+2026-06-28 10:57:33.965 INFO: Epoch 368: head: Default, loss=0.00573592, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.63 meV / A
+2026-06-28 10:59:37.004 INFO: Epoch 369: head: Default, loss=0.00573204, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.62 meV / A
+2026-06-28 11:01:40.168 INFO: Epoch 370: head: Default, loss=0.00573112, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.62 meV / A
+2026-06-28 11:03:43.241 INFO: Epoch 371: head: Default, loss=0.00573392, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.63 meV / A
+2026-06-28 11:05:46.089 INFO: Epoch 372: head: Default, loss=0.00573163, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.62 meV / A
+2026-06-28 11:07:49.045 INFO: Epoch 373: head: Default, loss=0.00572763, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.62 meV / A
+2026-06-28 11:09:52.143 INFO: Epoch 374: head: Default, loss=0.00572514, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.61 meV / A
+2026-06-28 11:11:55.581 INFO: Epoch 375: head: Default, loss=0.00572514, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.61 meV / A
+2026-06-28 11:13:58.579 INFO: Epoch 376: head: Default, loss=0.00572410, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.61 meV / A
+2026-06-28 11:16:01.943 INFO: Epoch 377: head: Default, loss=0.00572423, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.61 meV / A
+2026-06-28 11:18:04.683 INFO: Epoch 378: head: Default, loss=0.00572501, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.61 meV / A
+2026-06-28 11:20:07.422 INFO: Epoch 379: head: Default, loss=0.00572070, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.60 meV / A
+2026-06-28 11:22:10.811 INFO: Epoch 380: head: Default, loss=0.00571905, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.60 meV / A
+2026-06-28 11:24:14.134 INFO: Epoch 381: head: Default, loss=0.00571894, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.60 meV / A
+2026-06-28 11:26:17.248 INFO: Epoch 382: head: Default, loss=0.00571885, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.60 meV / A
+2026-06-28 11:28:20.346 INFO: Epoch 383: head: Default, loss=0.00571892, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.60 meV / A
+2026-06-28 11:30:23.335 INFO: Epoch 384: head: Default, loss=0.00571537, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.59 meV / A
+2026-06-28 11:32:26.625 INFO: Epoch 385: head: Default, loss=0.00571293, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.59 meV / A
+2026-06-28 11:34:29.781 INFO: Epoch 386: head: Default, loss=0.00571375, RMSE_E_per_atom=    0.24 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:36:32.537 INFO: Epoch 387: head: Default, loss=0.00571142, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:38:35.626 INFO: Epoch 388: head: Default, loss=0.00571058, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:40:38.674 INFO: Epoch 389: head: Default, loss=0.00570941, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:42:41.821 INFO: Epoch 390: head: Default, loss=0.00571117, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:44:44.719 INFO: Epoch 391: head: Default, loss=0.00570994, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:46:47.584 INFO: Epoch 392: head: Default, loss=0.00570769, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:48:50.723 INFO: Epoch 393: head: Default, loss=0.00570758, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.57 meV / A
+2026-06-28 11:50:53.704 INFO: Epoch 394: head: Default, loss=0.00570833, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:52:56.468 INFO: Epoch 395: head: Default, loss=0.00570801, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.58 meV / A
+2026-06-28 11:54:59.499 INFO: Epoch 396: head: Default, loss=0.00570455, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.57 meV / A
+2026-06-28 11:57:02.747 INFO: Epoch 397: head: Default, loss=0.00570151, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.56 meV / A
+2026-06-28 11:59:05.786 INFO: Epoch 398: head: Default, loss=0.00570084, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.56 meV / A
+2026-06-28 12:01:08.999 INFO: Epoch 399: head: Default, loss=0.00570231, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.56 meV / A
+2026-06-28 12:03:11.930 INFO: Epoch 400: head: Default, loss=0.00570087, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.56 meV / A
+2026-06-28 12:05:14.677 INFO: Epoch 401: head: Default, loss=0.00570037, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.56 meV / A
+2026-06-28 12:07:17.941 INFO: Epoch 402: head: Default, loss=0.00569856, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.56 meV / A
+2026-06-28 12:09:21.114 INFO: Epoch 403: head: Default, loss=0.00569663, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.55 meV / A
+2026-06-28 12:11:24.470 INFO: Epoch 404: head: Default, loss=0.00569535, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.55 meV / A
+2026-06-28 12:13:27.550 INFO: Epoch 405: head: Default, loss=0.00569413, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.55 meV / A
+2026-06-28 12:16:07.597 INFO: Epoch 406: head: Default, loss=0.00569056, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.54 meV / A
+2026-06-28 12:18:12.977 INFO: Epoch 407: head: Default, loss=0.00569115, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.54 meV / A
+2026-06-28 12:20:15.892 INFO: Epoch 408: head: Default, loss=0.00569083, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.54 meV / A
+2026-06-28 12:22:18.664 INFO: Epoch 409: head: Default, loss=0.00568853, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.54 meV / A
+2026-06-28 12:24:21.862 INFO: Epoch 410: head: Default, loss=0.00568773, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.53 meV / A
+2026-06-28 12:26:24.918 INFO: Epoch 411: head: Default, loss=0.00568596, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.53 meV / A
+2026-06-28 12:28:28.232 INFO: Epoch 412: head: Default, loss=0.00568784, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.53 meV / A
+2026-06-28 12:30:31.013 INFO: Epoch 413: head: Default, loss=0.00568355, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.53 meV / A
+2026-06-28 12:32:34.161 INFO: Epoch 414: head: Default, loss=0.00568486, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.53 meV / A
+2026-06-28 12:34:37.050 INFO: Epoch 415: head: Default, loss=0.00568160, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.52 meV / A
+2026-06-28 12:36:40.373 INFO: Epoch 416: head: Default, loss=0.00568167, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.52 meV / A
+2026-06-28 12:38:43.728 INFO: Epoch 417: head: Default, loss=0.00568030, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.52 meV / A
+2026-06-28 12:40:47.192 INFO: Epoch 418: head: Default, loss=0.00567968, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.52 meV / A
+2026-06-28 12:42:50.415 INFO: Epoch 419: head: Default, loss=0.00567859, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.52 meV / A
+2026-06-28 12:44:53.663 INFO: Epoch 420: head: Default, loss=0.00567917, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.52 meV / A
+2026-06-28 12:46:56.477 INFO: Epoch 421: head: Default, loss=0.00567743, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.51 meV / A
+2026-06-28 12:48:59.791 INFO: Epoch 422: head: Default, loss=0.00567578, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.51 meV / A
+2026-06-28 12:51:03.297 INFO: Epoch 423: head: Default, loss=0.00567497, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.51 meV / A
+2026-06-28 12:53:06.528 INFO: Epoch 424: head: Default, loss=0.00567436, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.51 meV / A
+2026-06-28 12:55:09.726 INFO: Epoch 425: head: Default, loss=0.00567196, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.50 meV / A
+2026-06-28 12:57:12.982 INFO: Epoch 426: head: Default, loss=0.00567017, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.50 meV / A
+2026-06-28 12:59:16.312 INFO: Epoch 427: head: Default, loss=0.00567240, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.50 meV / A
+2026-06-28 13:01:19.319 INFO: Epoch 428: head: Default, loss=0.00567071, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.50 meV / A
+2026-06-28 13:03:22.166 INFO: Epoch 429: head: Default, loss=0.00566793, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.49 meV / A
+2026-06-28 13:05:25.456 INFO: Epoch 430: head: Default, loss=0.00566592, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.49 meV / A
+2026-06-28 13:07:28.895 INFO: Epoch 431: head: Default, loss=0.00566847, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.50 meV / A
+2026-06-28 13:09:31.709 INFO: Epoch 432: head: Default, loss=0.00566438, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.49 meV / A
+2026-06-28 13:11:35.048 INFO: Epoch 433: head: Default, loss=0.00566343, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.49 meV / A
+2026-06-28 13:13:38.104 INFO: Epoch 434: head: Default, loss=0.00566423, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.49 meV / A
+2026-06-28 13:15:40.904 INFO: Epoch 435: head: Default, loss=0.00566349, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.49 meV / A
+2026-06-28 13:17:43.685 INFO: Epoch 436: head: Default, loss=0.00565906, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.48 meV / A
+2026-06-28 13:19:46.925 INFO: Epoch 437: head: Default, loss=0.00566072, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.48 meV / A
+2026-06-28 13:21:49.889 INFO: Epoch 438: head: Default, loss=0.00565718, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.47 meV / A
+2026-06-28 13:23:53.162 INFO: Epoch 439: head: Default, loss=0.00565754, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.47 meV / A
+2026-06-28 13:25:55.968 INFO: Epoch 440: head: Default, loss=0.00565761, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.47 meV / A
+2026-06-28 13:27:58.965 INFO: Epoch 441: head: Default, loss=0.00565606, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.47 meV / A
+2026-06-28 13:30:02.296 INFO: Epoch 442: head: Default, loss=0.00565744, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.47 meV / A
+2026-06-28 13:32:05.127 INFO: Epoch 443: head: Default, loss=0.00565355, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.47 meV / A
+2026-06-28 13:34:08.266 INFO: Epoch 444: head: Default, loss=0.00565333, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.46 meV / A
+2026-06-28 13:36:11.647 INFO: Epoch 445: head: Default, loss=0.00565024, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.46 meV / A
+2026-06-28 13:38:14.962 INFO: Epoch 446: head: Default, loss=0.00564972, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.46 meV / A
+2026-06-28 13:40:18.226 INFO: Epoch 447: head: Default, loss=0.00565158, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.46 meV / A
+2026-06-28 13:42:21.098 INFO: Epoch 448: head: Default, loss=0.00565099, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.46 meV / A
+2026-06-28 13:44:23.913 INFO: Epoch 449: head: Default, loss=0.00564791, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.45 meV / A
+2026-06-28 13:46:27.027 INFO: Epoch 450: head: Default, loss=0.00564799, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.45 meV / A
+2026-06-28 13:48:29.741 INFO: Epoch 451: head: Default, loss=0.00564567, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.45 meV / A
+2026-06-28 13:50:33.314 INFO: Epoch 452: head: Default, loss=0.00564728, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.45 meV / A
+2026-06-28 13:52:36.120 INFO: Epoch 453: head: Default, loss=0.00564458, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.45 meV / A
+2026-06-28 13:54:39.301 INFO: Epoch 454: head: Default, loss=0.00564375, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.44 meV / A
+2026-06-28 13:56:42.682 INFO: Epoch 455: head: Default, loss=0.00564342, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.44 meV / A
+2026-06-28 13:58:45.996 INFO: Epoch 456: head: Default, loss=0.00564213, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.44 meV / A
+2026-06-28 14:00:49.252 INFO: Epoch 457: head: Default, loss=0.00563842, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.43 meV / A
+2026-06-28 14:02:52.474 INFO: Epoch 458: head: Default, loss=0.00563899, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.43 meV / A
+2026-06-28 14:04:55.455 INFO: Epoch 459: head: Default, loss=0.00563942, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.44 meV / A
+2026-06-28 14:06:58.253 INFO: Epoch 460: head: Default, loss=0.00563539, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.43 meV / A
+2026-06-28 14:09:01.526 INFO: Epoch 461: head: Default, loss=0.00563679, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.43 meV / A
+2026-06-28 14:11:04.473 INFO: Epoch 462: head: Default, loss=0.00563456, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.43 meV / A
+2026-06-28 14:13:07.925 INFO: Epoch 463: head: Default, loss=0.00563275, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.42 meV / A
+2026-06-28 14:15:11.630 INFO: Epoch 464: head: Default, loss=0.00563195, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.42 meV / A
+2026-06-28 14:17:15.028 INFO: Epoch 465: head: Default, loss=0.00563285, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.42 meV / A
+2026-06-28 14:19:18.233 INFO: Epoch 466: head: Default, loss=0.00563124, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.42 meV / A
+2026-06-28 14:21:21.548 INFO: Epoch 467: head: Default, loss=0.00562979, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.42 meV / A
+2026-06-28 14:23:24.804 INFO: Epoch 468: head: Default, loss=0.00563068, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.42 meV / A
+2026-06-28 14:25:27.643 INFO: Epoch 469: head: Default, loss=0.00562887, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.41 meV / A
+2026-06-28 14:27:31.183 INFO: Epoch 470: head: Default, loss=0.00562860, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.41 meV / A
+2026-06-28 14:29:34.413 INFO: Epoch 471: head: Default, loss=0.00562803, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.41 meV / A
+2026-06-28 14:31:37.653 INFO: Epoch 472: head: Default, loss=0.00562684, RMSE_E_per_atom=    0.23 meV, RMSE_F=   23.41 meV / A
+2026-06-28 14:34:19.803 INFO: Epoch 473: head: Default, loss=0.00562511, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.41 meV / A
+2026-06-28 14:36:24.491 INFO: Epoch 474: head: Default, loss=0.00562185, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.40 meV / A
+2026-06-28 14:38:29.797 INFO: Epoch 475: head: Default, loss=0.00562236, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.40 meV / A
+2026-06-28 14:40:34.278 INFO: Epoch 476: head: Default, loss=0.00562116, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.40 meV / A
+2026-06-28 14:42:39.099 INFO: Epoch 477: head: Default, loss=0.00561904, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.40 meV / A
+2026-06-28 14:44:42.330 INFO: Epoch 478: head: Default, loss=0.00561981, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.40 meV / A
+2026-06-28 14:46:45.103 INFO: Epoch 479: head: Default, loss=0.00561814, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.39 meV / A
+2026-06-28 14:48:48.225 INFO: Epoch 480: head: Default, loss=0.00562141, RMSE_E_per_atom=    0.28 meV, RMSE_F=   23.39 meV / A
+2026-06-28 14:50:51.123 INFO: Epoch 481: head: Default, loss=0.00561837, RMSE_E_per_atom=    0.24 meV, RMSE_F=   23.39 meV / A
+2026-06-28 14:52:54.054 INFO: Epoch 482: head: Default, loss=0.00561708, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.39 meV / A
+2026-06-28 14:54:57.693 INFO: Epoch 483: head: Default, loss=0.00561606, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.39 meV / A
+2026-06-28 14:57:00.831 INFO: Epoch 484: head: Default, loss=0.00561593, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.39 meV / A
+2026-06-28 14:59:03.845 INFO: Epoch 485: head: Default, loss=0.00561510, RMSE_E_per_atom=    0.22 meV, RMSE_F=   23.39 meV / A
+2026-06-28 15:01:06.868 INFO: Epoch 486: head: Default, loss=0.00561348, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.38 meV / A
+2026-06-28 15:03:09.949 INFO: Epoch 487: head: Default, loss=0.00561114, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.38 meV / A
+2026-06-28 15:05:12.930 INFO: Epoch 488: head: Default, loss=0.00561150, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.38 meV / A
+2026-06-28 15:07:15.661 INFO: Epoch 489: head: Default, loss=0.00561403, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.39 meV / A
+2026-06-28 15:09:18.184 INFO: Epoch 490: head: Default, loss=0.00560982, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.38 meV / A
+2026-06-28 15:11:21.311 INFO: Epoch 491: head: Default, loss=0.00560951, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.38 meV / A
+2026-06-28 15:13:24.341 INFO: Epoch 492: head: Default, loss=0.00560759, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.37 meV / A
+2026-06-28 15:15:27.523 INFO: Epoch 493: head: Default, loss=0.00560805, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.37 meV / A
+2026-06-28 15:17:30.262 INFO: Epoch 494: head: Default, loss=0.00560511, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.37 meV / A
+2026-06-28 15:19:33.276 INFO: Epoch 495: head: Default, loss=0.00560392, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.36 meV / A
+2026-06-28 15:21:36.541 INFO: Epoch 496: head: Default, loss=0.00560377, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.36 meV / A
+2026-06-28 15:23:39.705 INFO: Epoch 497: head: Default, loss=0.00560301, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.36 meV / A
+2026-06-28 15:25:42.661 INFO: Epoch 498: head: Default, loss=0.00560078, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.36 meV / A
+2026-06-28 15:27:45.726 INFO: Epoch 499: head: Default, loss=0.00560153, RMSE_E_per_atom=    0.21 meV, RMSE_F=   23.36 meV / A
+2026-06-28 15:27:45.728 INFO: Training complete
+2026-06-28 15:27:45.728 INFO: 
+2026-06-28 15:27:45.728 INFO: ===========RESULTS===========
+2026-06-28 15:27:46.075 INFO: Loading checkpoint: MACE_models/mace_model_run-42_epoch-192.pt
+2026-06-28 15:27:46.943 INFO: Loaded Stage one model from epoch 192 for evaluation
+2026-06-28 15:27:46.943 INFO: Saving model to MACE_models/mace_model_run-42.model
+2026-06-28 15:27:47.564 INFO: Compiling model, saving metadata to MACE_models/mace_model_compiled.model
+2026-06-28 15:27:49.378 INFO: Computing metrics for training, validation, and test sets
+2026-06-28 15:27:49.380 INFO: Skipping evaluation for heads: ['pt_head']
+2026-06-28 15:27:49.380 INFO: Evaluating train_Default ...
+2026-06-28 15:28:30.035 INFO: Evaluating valid_Default ...
+2026-06-28 15:28:35.315 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            1.4      |         19.0     |          1.66     |
+| valid_Default |            1.4      |         24.1     |          2.10     |
++---------------+---------------------+------------------+-------------------+
+2026-06-28 15:28:35.315 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/014/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.385 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/024/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.452 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/052/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.519 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/055/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.583 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/062/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.647 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/066/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.711 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/089/OUT.amor_Si_Default ...
+2026-06-28 15:28:35.775 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/004/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:35.837 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/007/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:35.897 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/025/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:35.956 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/041/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.017 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/046/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.078 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/053/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.139 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/057/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.199 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/072/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.259 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/074/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.319 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/089/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.379 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/097/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.439 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/100/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.499 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1001/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.569 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1008/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.638 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1015/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.707 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1018/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.774 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1031/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.842 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1035/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.911 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1040/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:36.981 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/106/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.043 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/113/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.103 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/115/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.164 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/122/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.225 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/143/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.285 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/148/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.346 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/156/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.407 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/157/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.467 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/163/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.529 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/164/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.590 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/180/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.651 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/223/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.711 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/237/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.771 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/259/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.832 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/262/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.892 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/265/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:37.952 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/270/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.013 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/277/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.073 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/279/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.134 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/281/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.194 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/287/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.255 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/296/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.315 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/299/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.376 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/306/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.437 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/331/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.496 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/335/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.556 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/344/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.615 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/368/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.676 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/371/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.737 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/372/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.798 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/376/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.860 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/378/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.921 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/382/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:38.982 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/393/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.042 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/399/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.103 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/422/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.163 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/430/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.223 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/474/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.284 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/476/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.344 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/494/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.405 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/519/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.465 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/526/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.525 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/534/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.586 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/557/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.653 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/565/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.720 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/570/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.787 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/571/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.853 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/577/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.918 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/588/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:39.985 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/605/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.054 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/607/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.120 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/608/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.189 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/611/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.257 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/618/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.322 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/640/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.389 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/647/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.454 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/651/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.518 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/689/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.581 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/694/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.644 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/695/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.707 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/707/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.770 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/749/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.843 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/758/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.914 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/769/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:40.987 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/770/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.057 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/776/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.130 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/788/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.204 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/840/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.275 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/852/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.341 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/864/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.408 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/873/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.475 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/913/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.542 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/923/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.606 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/928/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.673 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/929/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.739 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/933/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.805 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/946/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.873 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/960/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:41.941 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/963/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:42.010 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/970/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:42.077 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/979/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:42.145 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/991/OUT.amor_SiO2_Default ...
+2026-06-28 15:28:42.214 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/003/OUT.Si_Default ...
+2026-06-28 15:28:42.260 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/004/OUT.Si_Default ...
+2026-06-28 15:28:42.300 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/005/OUT.Si_Default ...
+2026-06-28 15:28:42.341 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/007/OUT.Si_Default ...
+2026-06-28 15:28:42.381 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/010/OUT.Si_Default ...
+2026-06-28 15:28:42.421 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/013/OUT.Si_Default ...
+2026-06-28 15:28:42.462 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/022/OUT.Si_Default ...
+2026-06-28 15:28:42.502 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/032/OUT.Si_Default ...
+2026-06-28 15:28:42.542 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/037/OUT.Si_Default ...
+2026-06-28 15:28:42.583 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/040/OUT.Si_Default ...
+2026-06-28 15:28:42.623 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/063/OUT.Si_Default ...
+2026-06-28 15:28:42.663 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/069/OUT.Si_Default ...
+2026-06-28 15:28:42.704 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/070/OUT.Si_Default ...
+2026-06-28 15:28:42.744 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/074/OUT.Si_Default ...
+2026-06-28 15:28:42.785 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/081/OUT.Si_Default ...
+2026-06-28 15:28:42.825 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/083/OUT.Si_Default ...
+2026-06-28 15:28:42.865 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/085/OUT.Si_Default ...
+2026-06-28 15:28:42.906 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/089/OUT.Si_Default ...
+2026-06-28 15:28:42.946 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/090/OUT.Si_Default ...
+2026-06-28 15:28:42.991 INFO: Error-table on TEST:
++--------------------------------------------------------------------------------------+---------------------+------------------+-------------------+
+|                                     config_type                                      | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++--------------------------------------------------------------------------------------+---------------------+------------------+-------------------+
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/014/OUT.amor_Si_Default      |            0.4      |         23.2     |          3.53     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/024/OUT.amor_Si_Default      |            0.3      |         21.7     |          3.24     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/052/OUT.amor_Si_Default      |            0.7      |         27.4     |          3.54     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/055/OUT.amor_Si_Default      |            0.2      |         26.3     |          3.32     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/062/OUT.amor_Si_Default      |            0.6      |         29.1     |          4.03     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/066/OUT.amor_Si_Default      |            0.2      |         20.1     |          2.75     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/089/OUT.amor_Si_Default      |            0.4      |         22.8     |          3.56     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/004/OUT.amor_SiO2_Default  |            1.0      |         19.7     |          1.84     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/007/OUT.amor_SiO2_Default  |            1.0      |         18.3     |          1.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/025/OUT.amor_SiO2_Default  |            1.1      |         21.1     |          1.60     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/041/OUT.amor_SiO2_Default  |            1.2      |         19.7     |          1.58     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/046/OUT.amor_SiO2_Default  |            0.9      |         24.0     |          1.80     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/053/OUT.amor_SiO2_Default  |            1.1      |         16.4     |          1.30     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/057/OUT.amor_SiO2_Default  |            1.1      |         17.5     |          1.31     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/072/OUT.amor_SiO2_Default  |            1.0      |         17.6     |          1.54     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/074/OUT.amor_SiO2_Default  |            0.9      |         17.0     |          1.41     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/089/OUT.amor_SiO2_Default  |            1.1      |         16.9     |          1.44     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/097/OUT.amor_SiO2_Default  |            0.9      |         16.6     |          1.55     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/100/OUT.amor_SiO2_Default  |            1.3      |         17.5     |          1.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1001/OUT.amor_SiO2_Default |            1.8      |         21.4     |          1.79     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1008/OUT.amor_SiO2_Default |            1.9      |         21.8     |          1.95     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1015/OUT.amor_SiO2_Default |            1.9      |         24.4     |          2.11     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1018/OUT.amor_SiO2_Default |            1.7      |         23.1     |          2.34     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1031/OUT.amor_SiO2_Default |            1.8      |         25.6     |          2.28     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1035/OUT.amor_SiO2_Default |            1.7      |         29.7     |          2.51     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1040/OUT.amor_SiO2_Default |            1.6      |         23.0     |          1.89     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/106/OUT.amor_SiO2_Default  |            0.6      |         19.4     |          1.41     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/113/OUT.amor_SiO2_Default  |            0.3      |         21.1     |          1.61     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/115/OUT.amor_SiO2_Default  |            0.4      |         19.0     |          1.49     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/122/OUT.amor_SiO2_Default  |            0.8      |         22.7     |          1.67     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/143/OUT.amor_SiO2_Default  |            0.4      |         21.8     |          1.69     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/148/OUT.amor_SiO2_Default  |            0.6      |         18.5     |          1.31     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/156/OUT.amor_SiO2_Default  |            0.7      |         19.1     |          1.52     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/157/OUT.amor_SiO2_Default  |            0.5      |         20.3     |          1.47     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/163/OUT.amor_SiO2_Default  |            0.5      |         24.8     |          1.83     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/164/OUT.amor_SiO2_Default  |            0.7      |         18.1     |          1.38     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/180/OUT.amor_SiO2_Default  |            0.6      |         20.3     |          1.56     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/223/OUT.amor_SiO2_Default  |            0.7      |         19.6     |          1.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/237/OUT.amor_SiO2_Default  |            0.7      |         21.6     |          1.55     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/259/OUT.amor_SiO2_Default  |            0.8      |         19.3     |          1.65     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/262/OUT.amor_SiO2_Default  |            0.9      |         20.8     |          1.74     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/265/OUT.amor_SiO2_Default  |            0.9      |         21.1     |          1.66     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/270/OUT.amor_SiO2_Default  |            0.8      |         20.0     |          1.32     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/277/OUT.amor_SiO2_Default  |            0.5      |         17.8     |          1.65     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/279/OUT.amor_SiO2_Default  |            0.7      |         18.6     |          1.31     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/281/OUT.amor_SiO2_Default  |            0.8      |         17.4     |          1.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/287/OUT.amor_SiO2_Default  |            0.7      |         23.1     |          1.74     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/296/OUT.amor_SiO2_Default  |            0.7      |         20.2     |          1.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/299/OUT.amor_SiO2_Default  |            0.6      |         19.0     |          1.54     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/306/OUT.amor_SiO2_Default  |            1.2      |         24.0     |          1.72     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/331/OUT.amor_SiO2_Default  |            1.0      |         16.9     |          1.75     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/335/OUT.amor_SiO2_Default  |            1.1      |         18.8     |          1.38     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/344/OUT.amor_SiO2_Default  |            0.9      |         21.9     |          1.70     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/368/OUT.amor_SiO2_Default  |            1.0      |         21.0     |          1.75     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/371/OUT.amor_SiO2_Default  |            0.9      |         23.5     |          1.77     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/372/OUT.amor_SiO2_Default  |            1.2      |         20.8     |          1.64     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/376/OUT.amor_SiO2_Default  |            0.9      |         21.4     |          1.45     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/378/OUT.amor_SiO2_Default  |            1.0      |         17.0     |          1.45     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/382/OUT.amor_SiO2_Default  |            1.0      |         22.9     |          1.79     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/393/OUT.amor_SiO2_Default  |            0.9      |         22.2     |          1.49     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/399/OUT.amor_SiO2_Default  |            0.9      |         19.2     |          1.50     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/422/OUT.amor_SiO2_Default  |            1.0      |         17.3     |          1.37     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/430/OUT.amor_SiO2_Default  |            0.9      |         16.3     |          1.34     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/474/OUT.amor_SiO2_Default  |            0.9      |         20.5     |          1.47     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/476/OUT.amor_SiO2_Default  |            1.0      |         14.2     |          1.25     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/494/OUT.amor_SiO2_Default  |            1.1      |         18.8     |          1.59     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/519/OUT.amor_SiO2_Default  |            0.6      |         19.9     |          1.51     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/526/OUT.amor_SiO2_Default  |            0.8      |         38.1     |          2.96     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/534/OUT.amor_SiO2_Default  |            0.7      |         24.9     |          2.02     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/557/OUT.amor_SiO2_Default  |            1.7      |         23.1     |          1.82     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/565/OUT.amor_SiO2_Default  |            1.6      |         20.8     |          1.66     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/570/OUT.amor_SiO2_Default  |            1.7      |         21.5     |          1.74     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/571/OUT.amor_SiO2_Default  |            2.0      |         21.0     |          2.08     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/577/OUT.amor_SiO2_Default  |            2.4      |         25.1     |          2.03     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/588/OUT.amor_SiO2_Default  |            1.9      |         25.3     |          2.48     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/605/OUT.amor_SiO2_Default  |            1.8      |         28.8     |          2.60     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/607/OUT.amor_SiO2_Default  |            1.9      |         30.9     |          2.82     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/608/OUT.amor_SiO2_Default  |            1.7      |         29.8     |          2.43     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/611/OUT.amor_SiO2_Default  |            2.0      |         23.7     |          2.29     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/618/OUT.amor_SiO2_Default  |            2.0      |         25.7     |          2.01     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/640/OUT.amor_SiO2_Default  |            1.8      |         29.0     |          2.68     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/647/OUT.amor_SiO2_Default  |            1.9      |         25.5     |          2.11     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/651/OUT.amor_SiO2_Default  |            1.5      |         26.2     |          2.36     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/689/OUT.amor_SiO2_Default  |            1.5      |         20.6     |          1.83     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/694/OUT.amor_SiO2_Default  |            1.6      |         24.7     |          2.24     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/695/OUT.amor_SiO2_Default  |            1.6      |         19.9     |          1.93     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/707/OUT.amor_SiO2_Default  |            1.4      |         21.7     |          1.78     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/749/OUT.amor_SiO2_Default  |            2.3      |         23.2     |          2.13     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/758/OUT.amor_SiO2_Default  |            2.4      |         24.8     |          2.25     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/769/OUT.amor_SiO2_Default  |            2.6      |         19.5     |          1.64     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/770/OUT.amor_SiO2_Default  |            2.4      |         28.9     |          2.83     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/776/OUT.amor_SiO2_Default  |            2.2      |         22.9     |          1.97     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/788/OUT.amor_SiO2_Default  |            2.4      |         27.8     |          2.23     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/840/OUT.amor_SiO2_Default  |            2.4      |         28.6     |          2.36     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/852/OUT.amor_SiO2_Default  |            1.9      |         27.0     |          2.46     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/864/OUT.amor_SiO2_Default  |            1.4      |         22.5     |          2.17     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/873/OUT.amor_SiO2_Default  |            1.0      |         28.8     |          2.70     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/913/OUT.amor_SiO2_Default  |            1.4      |         26.1     |          2.34     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/923/OUT.amor_SiO2_Default  |            1.8      |         25.2     |          2.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/928/OUT.amor_SiO2_Default  |            1.8      |         26.8     |          2.11     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/929/OUT.amor_SiO2_Default  |            1.4      |         22.7     |          2.26     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/933/OUT.amor_SiO2_Default  |            1.7      |         32.7     |          2.91     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/946/OUT.amor_SiO2_Default  |            1.7      |         24.9     |          2.12     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/960/OUT.amor_SiO2_Default  |            1.8      |         26.2     |          2.15     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/963/OUT.amor_SiO2_Default  |            1.9      |         29.0     |          2.51     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/970/OUT.amor_SiO2_Default  |            1.9      |         25.5     |          2.44     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/979/OUT.amor_SiO2_Default  |            1.9      |         25.6     |          2.34     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/991/OUT.amor_SiO2_Default  |            1.4      |         23.4     |          2.05     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/003/OUT.Si_Default         |            0.1      |         12.7     |          1.39     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/004/OUT.Si_Default         |            0.2      |         13.1     |          1.63     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/005/OUT.Si_Default         |            0.3      |         14.2     |          2.19     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/007/OUT.Si_Default         |            0.1      |          8.6     |          1.06     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/010/OUT.Si_Default         |            0.1      |         10.8     |          1.35     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/013/OUT.Si_Default       |            0.2      |         12.5     |          1.59     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/022/OUT.Si_Default       |            0.2      |         13.3     |          2.07     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/032/OUT.Si_Default       |            0.2      |         12.4     |          1.42     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/037/OUT.Si_Default       |            0.0      |         10.5     |          1.43     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/040/OUT.Si_Default       |            0.1      |         13.6     |          2.21     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/063/OUT.Si_Default       |            0.1      |         11.8     |          1.37     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/069/OUT.Si_Default       |            0.0      |         11.3     |          1.37     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/070/OUT.Si_Default       |            0.2      |          9.8     |          1.46     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/074/OUT.Si_Default       |            0.0      |         10.5     |          1.33     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/081/OUT.Si_Default       |            0.1      |         14.3     |          1.83     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/083/OUT.Si_Default       |            0.0      |         11.6     |          1.60     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/085/OUT.Si_Default       |            0.0      |         10.2     |          1.43     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/089/OUT.Si_Default       |            0.1      |         12.7     |          1.45     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/090/OUT.Si_Default       |            0.1      |         14.9     |          2.30     |
++--------------------------------------------------------------------------------------+---------------------+------------------+-------------------+
+2026-06-28 15:29:45.044 INFO: Loading checkpoint: MACE_models/mace_model_run-42_epoch-498_swa.pt
+2026-06-28 15:29:45.176 INFO: Loaded Stage two model from epoch 498 for evaluation
+2026-06-28 15:29:45.176 INFO: Saving model to MACE_models/mace_model_run-42_stagetwo.model
+2026-06-28 15:29:45.714 INFO: Compiling model, saving metadata MACE_models/mace_model_stagetwo_compiled.model
+2026-06-28 15:29:46.880 INFO: Computing metrics for training, validation, and test sets
+2026-06-28 15:29:46.881 INFO: Skipping evaluation for heads: ['pt_head']
+2026-06-28 15:29:46.881 INFO: Evaluating train_Default ...
+2026-06-28 15:30:27.822 INFO: Evaluating valid_Default ...
+2026-06-28 15:30:33.024 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            0.3      |         17.5     |          1.53     |
+| valid_Default |            0.2      |         23.4     |          2.03     |
++---------------+---------------------+------------------+-------------------+
+2026-06-28 15:30:33.025 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/014/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.091 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/024/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.158 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/052/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.224 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/055/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.290 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/062/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.354 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/066/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.417 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/089/OUT.amor_Si_Default ...
+2026-06-28 15:30:33.482 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/004/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.542 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/007/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.597 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/025/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.656 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/041/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.713 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/046/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.768 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/053/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.828 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/057/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.887 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/072/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:33.943 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/074/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.003 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/089/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.062 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/097/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.121 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/100/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.180 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1001/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.248 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1008/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.318 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1015/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.387 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1018/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.455 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1031/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.524 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1035/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.593 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1040/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.663 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/106/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.723 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/113/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.782 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/115/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.839 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/122/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.898 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/143/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:34.956 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/148/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.014 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/156/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.073 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/157/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.131 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/163/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.190 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/164/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.248 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/180/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.306 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/223/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.364 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/237/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.421 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/259/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.479 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/262/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.537 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/265/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.594 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/270/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.652 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/277/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.710 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/279/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.770 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/281/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.828 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/287/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.886 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/296/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:35.946 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/299/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.004 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/306/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.063 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/331/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.119 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/335/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.178 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/344/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.233 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/368/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.292 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/371/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.351 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/372/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.407 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/376/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.463 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/378/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.522 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/382/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.578 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/393/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.634 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/399/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.692 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/422/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.751 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/430/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.809 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/474/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.867 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/476/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.925 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/494/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:36.983 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/519/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.042 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/526/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.102 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/534/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.161 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/557/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.228 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/565/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.296 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/570/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.364 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/571/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.431 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/577/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.498 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/588/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.565 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/605/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.634 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/607/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.702 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/608/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.773 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/611/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.841 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/618/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.908 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/640/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:37.976 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/647/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.040 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/651/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.103 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/689/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.166 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/694/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.229 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/695/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.291 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/707/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.354 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/749/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.429 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/758/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.500 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/769/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.573 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/770/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.643 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/776/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.718 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/788/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.792 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/840/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.863 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/852/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.931 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/864/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:38.998 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/873/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.065 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/913/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.133 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/923/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.198 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/928/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.266 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/929/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.332 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/933/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.398 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/946/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.467 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/960/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.536 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/963/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.606 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/970/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.673 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/979/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.742 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/991/OUT.amor_SiO2_Default ...
+2026-06-28 15:30:39.812 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/003/OUT.Si_Default ...
+2026-06-28 15:30:39.861 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/004/OUT.Si_Default ...
+2026-06-28 15:30:39.901 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/005/OUT.Si_Default ...
+2026-06-28 15:30:39.941 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/007/OUT.Si_Default ...
+2026-06-28 15:30:39.982 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/010/OUT.Si_Default ...
+2026-06-28 15:30:40.023 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/013/OUT.Si_Default ...
+2026-06-28 15:30:40.063 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/022/OUT.Si_Default ...
+2026-06-28 15:30:40.103 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/032/OUT.Si_Default ...
+2026-06-28 15:30:40.144 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/037/OUT.Si_Default ...
+2026-06-28 15:30:40.184 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/040/OUT.Si_Default ...
+2026-06-28 15:30:40.225 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/063/OUT.Si_Default ...
+2026-06-28 15:30:40.265 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/069/OUT.Si_Default ...
+2026-06-28 15:30:40.306 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/070/OUT.Si_Default ...
+2026-06-28 15:30:40.346 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/074/OUT.Si_Default ...
+2026-06-28 15:30:40.386 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/081/OUT.Si_Default ...
+2026-06-28 15:30:40.427 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/083/OUT.Si_Default ...
+2026-06-28 15:30:40.467 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/085/OUT.Si_Default ...
+2026-06-28 15:30:40.508 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/089/OUT.Si_Default ...
+2026-06-28 15:30:40.548 INFO: Evaluating /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/090/OUT.Si_Default ...
+2026-06-28 15:30:40.593 INFO: Error-table on TEST:
++--------------------------------------------------------------------------------------+---------------------+------------------+-------------------+
+|                                     config_type                                      | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++--------------------------------------------------------------------------------------+---------------------+------------------+-------------------+
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/014/OUT.amor_Si_Default      |            0.0      |         21.6     |          3.29     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/024/OUT.amor_Si_Default      |            0.1      |         20.2     |          3.01     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/052/OUT.amor_Si_Default      |            0.1      |         25.5     |          3.29     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/055/OUT.amor_Si_Default      |            0.2      |         25.1     |          3.17     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/062/OUT.amor_Si_Default      |            0.1      |         28.3     |          3.91     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/066/OUT.amor_Si_Default      |            0.2      |         18.8     |          2.58     |
+|     /share/home/hechao/Work/DataOfDFT/amor_Si/train_val/089/OUT.amor_Si_Default      |            0.0      |         21.4     |          3.34     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/004/OUT.amor_SiO2_Default  |            0.0      |         18.5     |          1.74     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/007/OUT.amor_SiO2_Default  |            0.0      |         17.7     |          1.35     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/025/OUT.amor_SiO2_Default  |            0.0      |         19.7     |          1.49     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/041/OUT.amor_SiO2_Default  |            0.2      |         18.4     |          1.47     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/046/OUT.amor_SiO2_Default  |            0.2      |         24.4     |          1.83     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/053/OUT.amor_SiO2_Default  |            0.0      |         15.6     |          1.24     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/057/OUT.amor_SiO2_Default  |            0.0      |         16.7     |          1.25     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/072/OUT.amor_SiO2_Default  |            0.1      |         17.5     |          1.53     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/074/OUT.amor_SiO2_Default  |            0.1      |         17.2     |          1.42     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/089/OUT.amor_SiO2_Default  |            0.1      |         16.1     |          1.37     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/097/OUT.amor_SiO2_Default  |            0.1      |         15.7     |          1.46     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/100/OUT.amor_SiO2_Default  |            0.2      |         17.2     |          1.38     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1001/OUT.amor_SiO2_Default |            0.1      |         21.3     |          1.79     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1008/OUT.amor_SiO2_Default |            0.0      |         21.1     |          1.88     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1015/OUT.amor_SiO2_Default |            0.1      |         24.4     |          2.11     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1018/OUT.amor_SiO2_Default |            0.3      |         22.2     |          2.25     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1031/OUT.amor_SiO2_Default |            0.0      |         24.8     |          2.21     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1035/OUT.amor_SiO2_Default |            0.3      |         27.4     |          2.32     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/1040/OUT.amor_SiO2_Default |            0.2      |         22.5     |          1.85     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/106/OUT.amor_SiO2_Default  |            0.0      |         18.7     |          1.36     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/113/OUT.amor_SiO2_Default  |            0.3      |         20.5     |          1.57     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/115/OUT.amor_SiO2_Default  |            0.2      |         18.5     |          1.46     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/122/OUT.amor_SiO2_Default  |            0.2      |         21.5     |          1.58     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/143/OUT.amor_SiO2_Default  |            0.2      |         21.9     |          1.70     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/148/OUT.amor_SiO2_Default  |            0.0      |         17.6     |          1.24     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/156/OUT.amor_SiO2_Default  |            0.1      |         18.4     |          1.47     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/157/OUT.amor_SiO2_Default  |            0.1      |         19.1     |          1.39     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/163/OUT.amor_SiO2_Default  |            0.2      |         24.1     |          1.77     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/164/OUT.amor_SiO2_Default  |            0.0      |         17.3     |          1.32     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/180/OUT.amor_SiO2_Default  |            0.0      |         19.2     |          1.48     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/223/OUT.amor_SiO2_Default  |            0.1      |         18.8     |          1.34     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/237/OUT.amor_SiO2_Default  |            0.1      |         20.2     |          1.45     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/259/OUT.amor_SiO2_Default  |            0.0      |         18.4     |          1.58     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/262/OUT.amor_SiO2_Default  |            0.1      |         19.8     |          1.66     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/265/OUT.amor_SiO2_Default  |            0.0      |         20.2     |          1.59     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/270/OUT.amor_SiO2_Default  |            0.0      |         20.4     |          1.35     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/277/OUT.amor_SiO2_Default  |            0.3      |         17.8     |          1.65     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/279/OUT.amor_SiO2_Default  |            0.1      |         18.2     |          1.28     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/281/OUT.amor_SiO2_Default  |            0.0      |         16.8     |          1.36     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/287/OUT.amor_SiO2_Default  |            0.1      |         22.8     |          1.71     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/296/OUT.amor_SiO2_Default  |            0.0      |         19.9     |          1.37     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/299/OUT.amor_SiO2_Default  |            0.2      |         18.5     |          1.50     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/306/OUT.amor_SiO2_Default  |            0.1      |         23.2     |          1.66     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/331/OUT.amor_SiO2_Default  |            0.1      |         15.9     |          1.65     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/335/OUT.amor_SiO2_Default  |            0.0      |         17.8     |          1.31     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/344/OUT.amor_SiO2_Default  |            0.1      |         20.5     |          1.60     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/368/OUT.amor_SiO2_Default  |            0.1      |         21.0     |          1.75     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/371/OUT.amor_SiO2_Default  |            0.1      |         22.7     |          1.70     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/372/OUT.amor_SiO2_Default  |            0.1      |         20.0     |          1.58     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/376/OUT.amor_SiO2_Default  |            0.2      |         20.9     |          1.42     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/378/OUT.amor_SiO2_Default  |            0.1      |         16.5     |          1.41     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/382/OUT.amor_SiO2_Default  |            0.0      |         22.4     |          1.75     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/393/OUT.amor_SiO2_Default  |            0.1      |         21.1     |          1.42     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/399/OUT.amor_SiO2_Default  |            0.2      |         18.5     |          1.45     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/422/OUT.amor_SiO2_Default  |            0.1      |         16.6     |          1.31     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/430/OUT.amor_SiO2_Default  |            0.1      |         15.5     |          1.27     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/474/OUT.amor_SiO2_Default  |            0.0      |         19.1     |          1.37     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/476/OUT.amor_SiO2_Default  |            0.0      |         13.2     |          1.17     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/494/OUT.amor_SiO2_Default  |            0.2      |         17.6     |          1.50     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/519/OUT.amor_SiO2_Default  |            0.1      |         19.6     |          1.48     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/526/OUT.amor_SiO2_Default  |            0.0      |         35.9     |          2.79     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/534/OUT.amor_SiO2_Default  |            0.0      |         23.8     |          1.94     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/557/OUT.amor_SiO2_Default  |            0.1      |         22.7     |          1.79     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/565/OUT.amor_SiO2_Default  |            0.2      |         20.8     |          1.66     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/570/OUT.amor_SiO2_Default  |            0.1      |         20.7     |          1.67     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/571/OUT.amor_SiO2_Default  |            0.1      |         20.2     |          2.00     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/577/OUT.amor_SiO2_Default  |            0.4      |         24.7     |          1.99     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/588/OUT.amor_SiO2_Default  |            0.1      |         24.7     |          2.42     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/605/OUT.amor_SiO2_Default  |            0.0      |         28.9     |          2.61     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/607/OUT.amor_SiO2_Default  |            0.0      |         30.5     |          2.78     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/608/OUT.amor_SiO2_Default  |            0.0      |         28.8     |          2.35     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/611/OUT.amor_SiO2_Default  |            0.2      |         23.0     |          2.23     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/618/OUT.amor_SiO2_Default  |            0.0      |         25.4     |          1.99     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/640/OUT.amor_SiO2_Default  |            0.1      |         28.9     |          2.66     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/647/OUT.amor_SiO2_Default  |            0.3      |         25.2     |          2.08     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/651/OUT.amor_SiO2_Default  |            0.1      |         25.8     |          2.32     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/689/OUT.amor_SiO2_Default  |            0.1      |         20.3     |          1.81     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/694/OUT.amor_SiO2_Default  |            0.0      |         24.4     |          2.21     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/695/OUT.amor_SiO2_Default  |            0.1      |         19.5     |          1.88     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/707/OUT.amor_SiO2_Default  |            0.3      |         21.1     |          1.74     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/749/OUT.amor_SiO2_Default  |            0.0      |         22.2     |          2.04     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/758/OUT.amor_SiO2_Default  |            0.1      |         24.2     |          2.19     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/769/OUT.amor_SiO2_Default  |            0.3      |         19.1     |          1.60     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/770/OUT.amor_SiO2_Default  |            0.0      |         27.8     |          2.72     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/776/OUT.amor_SiO2_Default  |            0.0      |         22.3     |          1.92     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/788/OUT.amor_SiO2_Default  |            0.4      |         27.0     |          2.17     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/840/OUT.amor_SiO2_Default  |            0.2      |         27.9     |          2.30     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/852/OUT.amor_SiO2_Default  |            0.3      |         26.4     |          2.40     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/864/OUT.amor_SiO2_Default  |            0.2      |         21.7     |          2.09     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/873/OUT.amor_SiO2_Default  |            0.6      |         27.9     |          2.61     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/913/OUT.amor_SiO2_Default  |            0.1      |         25.0     |          2.24     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/923/OUT.amor_SiO2_Default  |            0.2      |         24.8     |          2.37     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/928/OUT.amor_SiO2_Default  |            0.2      |         25.9     |          2.03     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/929/OUT.amor_SiO2_Default  |            0.2      |         22.1     |          2.21     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/933/OUT.amor_SiO2_Default  |            0.2      |         34.8     |          3.10     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/946/OUT.amor_SiO2_Default  |            0.2      |         24.5     |          2.08     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/960/OUT.amor_SiO2_Default  |            0.1      |         24.4     |          2.00     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/963/OUT.amor_SiO2_Default  |            0.1      |         27.5     |          2.39     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/970/OUT.amor_SiO2_Default  |            0.0      |         24.8     |          2.38     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/979/OUT.amor_SiO2_Default  |            0.1      |         25.7     |          2.35     |
+| /share/home/hechao/Work/DataOfDFT/amor_SiO2/train_val_all/991/OUT.amor_SiO2_Default  |            0.4      |         22.8     |          1.99     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/003/OUT.Si_Default         |            0.2      |         12.3     |          1.34     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/004/OUT.Si_Default         |            0.0      |         12.3     |          1.52     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/005/OUT.Si_Default         |            0.2      |         13.8     |          2.13     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/007/OUT.Si_Default         |            0.2      |          8.1     |          1.00     |
+|         /share/home/hechao/Work/DataOfDFT/cry_Si/test/raw/010/OUT.Si_Default         |            0.0      |         10.5     |          1.31     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/013/OUT.Si_Default       |            0.1      |         12.0     |          1.53     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/022/OUT.Si_Default       |            0.1      |         12.5     |          1.95     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/032/OUT.Si_Default       |            0.0      |         11.9     |          1.36     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/037/OUT.Si_Default       |            0.1      |         10.2     |          1.38     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/040/OUT.Si_Default       |            0.1      |         12.8     |          2.08     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/063/OUT.Si_Default       |            0.0      |         11.1     |          1.30     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/069/OUT.Si_Default       |            0.1      |         11.2     |          1.35     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/070/OUT.Si_Default       |            0.0      |          9.5     |          1.42     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/074/OUT.Si_Default       |            0.1      |         10.0     |          1.26     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/081/OUT.Si_Default       |            0.1      |         13.8     |          1.76     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/083/OUT.Si_Default       |            0.1      |         10.9     |          1.51     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/085/OUT.Si_Default       |            0.1      |          9.6     |          1.35     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/089/OUT.Si_Default       |            0.2      |         12.6     |          1.44     |
+|      /share/home/hechao/Work/DataOfDFT/cry_Si/train_val/raw/090/OUT.Si_Default       |            0.1      |         14.4     |          2.23     |
++--------------------------------------------------------------------------------------+---------------------+------------------+-------------------+
+2026-06-28 15:31:40.099 INFO: Done
+
+[INFO] 完成! 模型保存在: /share/home/hechao/Work/DataOfDFT/mace/MACE_models/
