@@ -1,5 +1,6 @@
 ## 利用MACE训练一个SiO2和Si的MLP
 1、准备数据集：数据集为**extxyz**格式文件，可以查看**example.xyz**文件作为一个示例(example.xyz是此处部分用于训练的数据)
+
 2、调整**train.py**中的参数后执行
 ```
 python train.py
