@@ -9,7 +9,7 @@ python train.py
 
 4、结果
 
-训练设计的结构
+训练涉及的结构
 ![stru](/Fig/data.png)
 ```
 $ ls MACE_models/
